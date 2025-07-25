@@ -1,0 +1,27 @@
+.home {
+  background-image: url("../../img/HomePage.png");
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scaleX(-1);
+}
+
+.home__info {
+  transform: scaleX(-1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-top: 100px;
+}
+
+.home__info_title {
+  font-size: 72px;
+  font-weight: 300;
+  flex: 0 0 50%;
+}
+
+.home__info_title_text {
+  font-weight: 700;
+}
