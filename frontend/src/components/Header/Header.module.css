@@ -1,0 +1,30 @@
+.logo {
+  padding: 15px 0;
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.logo__text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  color: #e5e5e5;
+}
+
+.nav {
+  background-color: #292929;
+  padding: 25px 0;
+}
+
+.list {
+  display: flex;
+  max-width: 660px;
+  justify-content: space-between;
+}
+
+.list__item_link {
+  font-size: 30px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
