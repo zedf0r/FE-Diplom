@@ -1,5 +1,5 @@
-import { ConfigProvider, Select } from "antd";
-import "antd/dist/reset.css";
+import { Select } from "antd";
+import { Geoposition } from "../Icons";
 
 type TypeSelectOption = {
   value: string;
@@ -46,28 +46,17 @@ export const Selection = ({ placeholder }: { placeholder: string }) => {
     },
   ];
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Select: {
-            borderRadius: 5,
-            optionSelectedBg: "#6cbbf7ff",
-          },
-        },
-      }}
-    >
-      <Select
-        showSearch
-        style={{ width: 200 }}
-        placeholder={placeholder}
-        optionFilterProp="label"
-        filterSort={(optionA: TypeSelectOption, optionB: TypeSelectOption) =>
-          (optionA?.label ?? "")
-            .toLowerCase()
-            .localeCompare((optionB?.label ?? "").toLowerCase())
-        }
-        options={options}
-      />
-    </ConfigProvider>
+    <Select
+      suffixIcon={<Geoposition />}
+      style={{ width: "50%", borderRadius: 5, height: 60, fontSize: 18 }}
+      placeholder={placeholder}
+      optionFilterProp="label"
+      filterSort={(optionA: TypeSelectOption, optionB: TypeSelectOption) =>
+        (optionA?.label ?? "")
+          .toLowerCase()
+          .localeCompare((optionB?.label ?? "").toLowerCase())
+      }
+      options={options}
+    />
   );
 };

@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   padding: 80px 20px 60px;
-
-  flex: 0 1 50%;
+  flex: 1 1 50%;
   position: relative;
   z-index: 2;
+  row-gap: 60px;
 }
 
 .form::before {
@@ -21,8 +21,48 @@
   opacity: 0.8;
 }
 
-.direction {
+.form__chose {
+  display: flex;
+  flex-direction: column;
+  row-gap: 92px;
+}
+
+.form__info {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+}
+
+.form__title {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.button {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.direction__select {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.date__text {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.date__picker {
+  display: flex;
+  column-gap: 30px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.form__button {
+  align-self: flex-end;
 }

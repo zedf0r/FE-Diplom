@@ -36,8 +36,7 @@
 
 .list {
   display: flex;
-  max-width: 800px;
-  justify-content: space-between;
+  column-gap: 80px;
 }
 
 .list__item_link {
