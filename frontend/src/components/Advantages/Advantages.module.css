@@ -1,9 +1,10 @@
 .howitworks {
   padding: 70px 0 90px;
-  background-image: url("../../img/howitworks_bg.png");
+  background-image: url("../../img/advantages_bg.png");
   max-height: 575px;
   position: relative;
   z-index: 2;
+  background-repeat: no-repeat;
 }
 
 .howitworks::after {
