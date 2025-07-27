@@ -1,0 +1,16 @@
+.reviews {
+  padding: 150px 0 120px;
+}
+
+.reviews__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+}
+
+.reviews__title {
+  text-transform: uppercase;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--primary-color);
+}

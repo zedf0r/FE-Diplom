@@ -10,7 +10,11 @@ export const Advantages = () => {
         <div className={style.howitworks__content}>
           <div className={style.howitworks__header}>
             <h2 className={style.howitworks__title}>Как это работает</h2>
-            <Button onClick={handleClick} className="button__outline">
+            <Button
+              type="button"
+              onClick={handleClick}
+              className="button__outline_big"
+            >
               Узнать больше
             </Button>
           </div>

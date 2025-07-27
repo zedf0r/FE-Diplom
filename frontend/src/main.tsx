@@ -14,6 +14,10 @@ createRoot(document.getElementById("root")!).render(
             Select: {
               colorTextPlaceholder: "#818181",
             },
+            Carousel: {
+              dotHeight: 20,
+              dotWidth: 20,
+            },
           },
         }}
       >

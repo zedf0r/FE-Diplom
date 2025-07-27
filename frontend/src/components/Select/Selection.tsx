@@ -47,6 +47,7 @@ export const Selection = ({ placeholder }: { placeholder: string }) => {
   ];
   return (
     <Select
+      showSearch
       suffixIcon={<Geoposition />}
       style={{ width: "50%", borderRadius: 5, height: 60, fontSize: 18 }}
       placeholder={placeholder}

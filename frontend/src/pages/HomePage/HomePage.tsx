@@ -1,4 +1,4 @@
-import { Form, About, Advantages } from "../../components";
+import { Form, About, Advantages, Reviews } from "../../components";
 import style from "./HomePage.module.css";
 
 export const HomePage = () => {
@@ -17,6 +17,7 @@ export const HomePage = () => {
       </section>
       <About />
       <Advantages />
+      <Reviews />
     </main>
   );
 };

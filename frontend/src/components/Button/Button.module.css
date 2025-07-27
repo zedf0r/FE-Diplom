@@ -23,21 +23,25 @@
   color: #fff;
 }
 
-.button__outline {
+.button__outline_big {
+  padding: 16px 75px;
+}
+
+.button__outline_big {
   border: 1px solid #fff;
   color: #fff;
-  padding: 16px 75px;
+
   background-color: transparent;
   transition: 0.4s;
 }
 
-.button__outline:hover {
+.button__outline_big:hover {
   border: 1px solid #ffca62;
   background-color: #ffca62;
   color: #2d2b2f;
 }
 
-.button__outline:active {
+.button__outline_big:active {
   border: 1px solid #fff;
   background-color: #fff;
 }
