@@ -1,0 +1,62 @@
+.howitworks {
+  padding: 70px 0 90px;
+  background-image: url("../../img/howitworks_bg.png");
+  max-height: 575px;
+  position: relative;
+  z-index: 2;
+}
+
+.howitworks::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ffd600;
+  opacity: 0.3;
+}
+
+.howitworks__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
+}
+
+.howitworks__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.howitworks__title {
+  font-size: 36px;
+  font-weight: 500;
+  color: #fff;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 200px;
+}
+
+.list__item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 35px;
+}
+
+.item__text {
+  text-align: center;
+  width: 230px;
+  font-weight: 400;
+  font-size: 24px;
+  color: #e5e5e5;
+}

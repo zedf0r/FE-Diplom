@@ -1,7 +1,43 @@
 .button {
-  padding: 17px 68px;
-  background-color: #ffa800;
   font-size: 24px;
   font-weight: 700;
   cursor: pointer;
+  border-radius: 5px;
+}
+
+.button_fill {
+  padding: 17px 68px;
+  background-color: #ffa800;
+  color: var(--primary-color);
+  transition: 0.4s;
+  border: 1px solid #ffa800;
+}
+
+.button_fill:hover {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.button_fill:active {
+  background-color: transparent;
+  border: 1px solid #ffa800;
+  color: #fff;
+}
+
+.button__outline {
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 16px 75px;
+  background-color: transparent;
+  transition: 0.4s;
+}
+
+.button__outline:hover {
+  border: 1px solid #ffca62;
+  background-color: #ffca62;
+  color: #2d2b2f;
+}
+
+.button__outline:active {
+  border: 1px solid #fff;
+  background-color: #fff;
 }

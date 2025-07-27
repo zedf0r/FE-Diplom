@@ -50,9 +50,11 @@ export const Form = () => {
             />
           </div>
         </div>
-        <div className={style.form__button}>
-          <Button onClick={handleClick}>Найти билеты</Button>
-        </div>
+      </div>
+      <div className={style.form__button}>
+        <Button onClick={handleClick} className="button_fill">
+          Найти билеты
+        </Button>
       </div>
     </form>
   );

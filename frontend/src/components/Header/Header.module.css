@@ -30,7 +30,7 @@
 }
 
 .nav {
-  background-color: #292929;
+  background-color: var(--primary-color);
   padding: 25px 0;
 }
 

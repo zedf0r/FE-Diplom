@@ -11,7 +11,7 @@
   transform: scaleX(-1);
   color: #fff;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   height: 100%;
   padding-top: 100px;
 }
@@ -20,6 +20,7 @@
   font-size: 72px;
   font-weight: 300;
   flex: 0 0 50%;
+  align-self: center;
 }
 
 .home__info_title_text {

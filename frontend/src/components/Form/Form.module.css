@@ -5,7 +5,7 @@
   flex: 1 1 50%;
   position: relative;
   z-index: 2;
-  row-gap: 60px;
+  row-gap: 92px;
 }
 
 .form::before {
@@ -24,7 +24,7 @@
 .form__chose {
   display: flex;
   flex-direction: column;
-  row-gap: 92px;
+  row-gap: 60px;
 }
 
 .form__info {
