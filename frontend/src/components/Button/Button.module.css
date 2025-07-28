@@ -45,3 +45,25 @@
   border: 1px solid #fff;
   background-color: #fff;
 }
+
+.button__outline_small {
+  padding: 17px 15px;
+  text-transform: uppercase;
+  color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  background-color: transparent;
+  font-weight: 400;
+  transition: 0.4s;
+}
+
+.button__outline_small:hover {
+  border: 1px solid #ffca62;
+  background-color: #ffca62;
+  color: #2d2b2f;
+}
+
+.button__outline_small:active {
+  border: 1px solid #fff;
+  background-color: #fff;
+}
