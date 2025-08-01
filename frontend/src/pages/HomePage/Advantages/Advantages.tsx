@@ -1,6 +1,6 @@
 import style from "./Advantages.module.css";
-import { Button } from "..";
-import { MonitorIcon, OfficeIcon, WorldIcon } from "../Icons";
+import { Button } from "../../../components/";
+import { MonitorIcon, OfficeIcon, WorldIcon } from "../../../components/Icons";
 
 export const Advantages = () => {
   const handleClick = () => {};

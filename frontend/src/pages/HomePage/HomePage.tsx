@@ -1,4 +1,6 @@
-import { Form, About, Advantages, Reviews } from "../../components";
+import { Form } from "../../components";
+import { About, Advantages, Reviews } from "../";
+
 import style from "./HomePage.module.css";
 
 export const HomePage = () => {
