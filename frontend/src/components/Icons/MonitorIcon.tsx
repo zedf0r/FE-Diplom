@@ -1,4 +1,4 @@
-export const Monitor = () => {
+export const MonitorIcon = () => {
   return (
     <svg
       width="162"

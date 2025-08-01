@@ -1,4 +1,4 @@
-export const Office = () => {
+export const OfficeIcon = () => {
   return (
     <svg
       width="162"

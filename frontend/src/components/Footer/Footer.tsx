@@ -1,17 +1,17 @@
 import {
-  Email,
-  Facebook,
-  Geoposition,
-  GooglePlus,
-  Instagram,
-  Skype,
-  Telephone,
-  Twitter,
-  Youtube,
+  EmailIcon,
+  FacebookIcon,
+  GeopositionIcon,
+  GooglePlusIcon,
+  InstagramIcon,
+  SkypeIcon,
+  TelephoneIcon,
+  TwitterIcon,
+  YoutubeIcon,
+  ArrowTopIcon,
 } from "../Icons";
 import { Button } from "../";
 import style from "./Footer.module.css";
-import { ArrowTop } from "../Icons/ArrowTop";
 
 export const Footer = () => {
   const handleClick = () => {};
@@ -22,23 +22,23 @@ export const Footer = () => {
           <div className={style.footer__feedback}>
             <h3 className={style.footer__feedback_title}>Свяжитесь с нами</h3>
             <div className={style.footer__contact}>
-              <Telephone />
+              <TelephoneIcon />
               <a className={style.contact__text} href="tel:+88000000000">
                 8 (800) 000 00 00
               </a>
             </div>
             <div className={style.footer__contact}>
-              <Email />
+              <EmailIcon />
               <a className={style.contact__text} href="mailto:inbox@mail.ru">
                 inbox@mail.ru
               </a>
             </div>
             <div className={style.footer__contact}>
-              <Skype />
+              <SkypeIcon />
               <span className={style.contact__text}>tu.train.tickets</span>
             </div>
             <div className={style.footer__contact}>
-              <Geoposition />
+              <GeopositionIcon />
               <span className={style.contact__text}>
                 г. Москва ул. Московская 27-35 555 555
               </span>
@@ -73,23 +73,23 @@ export const Footer = () => {
                 </h3>
                 <div className={style.socials}>
                   <a className={style.social}>
-                    <Youtube />
+                    <YoutubeIcon />
                   </a>
 
                   <a className={style.social}>
-                    <Instagram />
+                    <InstagramIcon />
                   </a>
 
                   <a className={style.social}>
-                    <GooglePlus />
+                    <GooglePlusIcon />
                   </a>
 
                   <a className={style.social}>
-                    <Facebook />
+                    <FacebookIcon />
                   </a>
 
                   <a className={style.social}>
-                    <Twitter />
+                    <TwitterIcon />
                   </a>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export const Footer = () => {
           <div className={style.footer__bottom_inner}>
             <h3 className={style.footer__logo}>Лого</h3>
             <div className={style.footer__to_up}>
-              <ArrowTop />
+              <ArrowTopIcon />
             </div>
             <span className={style.footer__copyright}>2018 web</span>
           </div>

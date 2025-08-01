@@ -1,4 +1,5 @@
 import style from "./Button.module.css";
+import classNames from "classnames";
 
 type TypeButtonProps = {
   onClick: () => void;
@@ -12,11 +13,10 @@ export const Button = ({
   className,
   type,
 }: TypeButtonProps) => {
-  const cssColor = className;
   return (
     <button
       type={type}
-      className={`${style.button} ${style[cssColor]}`}
+      className={classNames(style.button, style[className])}
       onClick={onClick}
     >
       {children}

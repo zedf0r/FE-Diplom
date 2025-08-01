@@ -1,4 +1,4 @@
-export const Geoposition = () => {
+export const GeopositionIcon = () => {
   return (
     <svg
       width="24"

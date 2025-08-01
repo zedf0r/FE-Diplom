@@ -1,4 +1,5 @@
 import style from "./About.module.css";
+import classNames from "classnames";
 
 export const About = () => {
   return (
@@ -17,7 +18,9 @@ export const About = () => {
               клика, но стоит ли это делать? <br /> Мы расскажем о преимуществах
               заказа через интернет.
             </p>
-            <p className={`${style.about__text} ${style.about__text_bold}`}>
+            <p
+              className={classNames(style.about__text, style.about__text_bold)}
+            >
               Покупать жд билеты дешево можно за 90 суток до отправления поезда.
               <br />
               Благодаря динамическому ценообразованию цена на билеты в это время

@@ -5,7 +5,7 @@ export { Footer } from "./Footer/Footer";
 export { Form } from "./Form/Form";
 export { Selection } from "./Select/Selection";
 export { Button } from "./Button/Button";
-export { ReviewPerson } from "./ReviewPerson/ReviewPerson";
+export { ReviewPersons } from "./ReviewPerson/ReviewPersons";
 
 export { About } from "./About/About";
 export { Advantages } from "./Advantages/Advantages";

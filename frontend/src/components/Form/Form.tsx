@@ -1,6 +1,6 @@
 import style from "./Form.module.css";
 import { Button, Selection } from "../";
-import { ArrowReverse } from "../Icons";
+import { ArrowReverseIcon } from "../Icons";
 import { DatePicker } from "antd";
 import { useState } from "react";
 import dayjs from "dayjs";
@@ -18,7 +18,7 @@ export const Form = () => {
           <div className={style.direction__select}>
             <Selection placeholder="От куда" />
             <button type="button" className={style.button}>
-              <ArrowReverse />
+              <ArrowReverseIcon />
             </button>
             <Selection placeholder="Куда" />
           </div>
@@ -52,7 +52,7 @@ export const Form = () => {
         </div>
       </div>
       <div className={style.form__button}>
-        <Button type="submit" onClick={handleClick} className="button_fill">
+        <Button type="button" onClick={handleClick} className="button_fill">
           Найти билеты
         </Button>
       </div>

@@ -1,6 +1,6 @@
 import style from "./Advantages.module.css";
 import { Button } from "..";
-import { Monitor, Office, World } from "../Icons";
+import { MonitorIcon, OfficeIcon, WorldIcon } from "../Icons";
 
 export const Advantages = () => {
   const handleClick = () => {};
@@ -21,17 +21,17 @@ export const Advantages = () => {
 
           <ul className={style.list}>
             <li className={style.list__item}>
-              <Monitor />
+              <MonitorIcon />
               <span className={style.item__text}>Удобный заказ на сайте</span>
             </li>
             <li className={style.list__item}>
-              <Office />
+              <OfficeIcon />
               <span className={style.item__text}>
                 Нет необходимости ехать в офис
               </span>
             </li>
             <li className={style.list__item}>
-              <World />
+              <WorldIcon />
               <span className={style.item__text}>
                 Огромный выбор направлений
               </span>

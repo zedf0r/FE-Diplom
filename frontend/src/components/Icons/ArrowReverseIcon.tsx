@@ -1,4 +1,4 @@
-export const ArrowReverse = () => {
+export const ArrowReverseIcon = () => {
   return (
     <svg
       width="24"

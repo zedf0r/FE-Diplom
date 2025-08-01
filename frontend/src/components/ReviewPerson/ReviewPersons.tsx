@@ -7,7 +7,7 @@ type TypePersonProps = {
   text: string;
 };
 
-export const ReviewPerson = ({ persons }: { persons: TypePersonProps[] }) => {
+export const ReviewPersons = ({ persons }: { persons: TypePersonProps[] }) => {
   return (
     <div className={style.reviews__carousel}>
       {persons.map((person) => {

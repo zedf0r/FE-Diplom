@@ -1,4 +1,4 @@
-export const World = () => {
+export const WorldIcon = () => {
   return (
     <svg
       width="162"

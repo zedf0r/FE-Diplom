@@ -1,4 +1,4 @@
-export const GooglePlus = () => {
+export const GooglePlusIcon = () => {
   return (
     <svg
       width="47"

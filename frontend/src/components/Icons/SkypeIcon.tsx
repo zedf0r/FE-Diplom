@@ -1,4 +1,4 @@
-export const Skype = () => {
+export const SkypeIcon = () => {
   return (
     <svg
       width="30"

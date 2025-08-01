@@ -1,6 +1,7 @@
 .home {
-  background-image: url("../../img/HomePage.png");
+  background-image: url("../../img/homepage.png");
   height: 100vh;
+  max-height: 985px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;

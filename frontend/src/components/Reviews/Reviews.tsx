@@ -1,8 +1,8 @@
 import style from "./Reviews.module.css";
 import { Carousel } from "antd";
-import { ReviewPerson } from "../";
-import avatar1 from "../../img/avatar_1.png";
-import avatar2 from "../../img/avatar_2.png";
+import { ReviewPersons } from "../";
+import avatar1 from "../../../img/avatar_1.png";
+import avatar2 from "../../../img/avatar_2.png";
 
 export const Reviews = () => {
   const persons = [
@@ -30,9 +30,9 @@ export const Reviews = () => {
             autoplaySpeed={3000}
             dotPosition="bottom"
           >
-            <ReviewPerson persons={persons} />
-            <ReviewPerson persons={persons} />
-            <ReviewPerson persons={persons} />
+            <ReviewPersons persons={persons} />
+            <ReviewPersons persons={persons} />
+            <ReviewPersons persons={persons} />
           </Carousel>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { Select } from "antd";
-import { Geoposition } from "../Icons";
+import { GeopositionIcon } from "../Icons";
 
 type TypeSelectOption = {
   value: string;
@@ -48,7 +48,7 @@ export const Selection = ({ placeholder }: { placeholder: string }) => {
   return (
     <Select
       showSearch
-      suffixIcon={<Geoposition />}
+      suffixIcon={<GeopositionIcon />}
       style={{ width: "50%", borderRadius: 5, height: 60, fontSize: 18 }}
       placeholder={placeholder}
       optionFilterProp="label"
