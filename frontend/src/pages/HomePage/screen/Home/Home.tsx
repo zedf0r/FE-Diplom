@@ -1,4 +1,4 @@
-import { Form } from "../../../components";
+import { Form } from "../../../../components";
 import style from "./Home.module.css";
 
 export const Home = () => {
