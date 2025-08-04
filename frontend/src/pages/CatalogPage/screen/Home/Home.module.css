@@ -1,0 +1,29 @@
+.home {
+  height: 100vh;
+  max-height: 596px;
+  background-image: url("/img/trailway_bg.png");
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+}
+
+.home::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.4;
+}
+
+.home__info {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+}

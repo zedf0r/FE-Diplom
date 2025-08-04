@@ -1,3 +1,9 @@
+import { Home } from "./screen";
+
 export const CatalogPage = () => {
-  return <main></main>;
+  return (
+    <main>
+      <Home />
+    </main>
+  );
 };
