@@ -36,12 +36,6 @@ jobs:
           cd frontend
           npm run build
 
-      - name: Create gh-pages branch
-        run: |
-          git checkout --orphan gh-pages
-          git commit --allow-empty -m "Initial commit"
-          git push origin gh-pages
-
       - name: Deploy
         uses: actions/deploy-pages@v4
         with:
