@@ -22,13 +22,19 @@ jobs:
           persist-credentials: false
 
       - name: Install dependencies
-        run: npm i
+        run: |
+          cd frontend
+          npm i
 
       - name: Run checks
-        run: npm run lint
+        run: |
+          cd frontend
+          npm run lint
 
       - name: Build project
-        run: npm run build
+        run: |
+          cd frontend
+          npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
