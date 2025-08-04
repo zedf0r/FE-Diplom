@@ -1,4 +1,4 @@
-import { About, Advantages, Reviews, Home } from "./";
+import { About, Advantages, Reviews, Home } from "./screen";
 
 export const HomePage = () => {
   return (

@@ -4,6 +4,7 @@ import { ArrowReverseIcon } from "../Icons";
 import { DatePicker } from "antd";
 import { useState } from "react";
 import dayjs from "dayjs";
+import { Link } from "react-router";
 
 export const Form = () => {
   const [startDate, setStartDate] = useState();
@@ -52,9 +53,11 @@ export const Form = () => {
         </div>
       </div>
       <div className={style.form__button}>
-        <Button type="button" onClick={handleClick} className="button_fill">
-          Найти билеты
-        </Button>
+        <Link to="/catalog">
+          <Button type="button" onClick={handleClick} className="button_fill">
+            Найти билеты
+          </Button>
+        </Link>
       </div>
     </form>
   );
