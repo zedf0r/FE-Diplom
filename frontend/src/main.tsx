@@ -7,7 +7,7 @@ import { ConfigProvider } from "antd";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter basename="/FE-Diplom">
+    <BrowserRouter basename={import.meta.env.DEV ? "/" : "FE-Diplom"}>
       <ConfigProvider
         theme={{
           components: {
