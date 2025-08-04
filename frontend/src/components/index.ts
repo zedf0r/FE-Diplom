@@ -5,4 +5,4 @@ export { Footer } from "./Footer/Footer";
 export { Form } from "./Form/Form";
 export { Selection } from "./Select/Selection";
 export { Button } from "./Button/Button";
-export { ReviewPersons } from "../pages/HomePage/ReviewPersons/ReviewPersons";
+export { ReviewPersons } from "../pages/HomePage/screen/ReviewPersons/ReviewPersons";

@@ -1,4 +1,4 @@
-export { About } from "./About/About";
-export { Advantages } from "./Advantages/Advantages";
-export { Reviews } from "./Reviews/Reviews";
-export { Home } from "./Home/Home";
+export { About } from "./screen/About/About";
+export { Advantages } from "./screen/Advantages/Advantages";
+export { Reviews } from "./screen/Reviews/Reviews";
+export { Home } from "./screen/Home/Home";
