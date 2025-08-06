@@ -3,6 +3,7 @@
   max-height: 596px;
   background-image: url("/img/trailway_bg.png");
   background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
   z-index: 1;
 }
