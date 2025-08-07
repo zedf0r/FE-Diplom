@@ -12,3 +12,5 @@ export { InstagramIcon } from "./InstagramIcon";
 export { GooglePlusIcon } from "./GooglePlusIcon";
 export { FacebookIcon } from "./FacebookIcon";
 export { TwitterIcon } from "./TwitterIcon";
+export { TrainIcon } from "./TrainIcon";
+export { ArrowRightIcon } from "./ArrowRightIcon";

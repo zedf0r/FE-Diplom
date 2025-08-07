@@ -1,0 +1,111 @@
+.card {
+  display: flex;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+  max-width: 960px;
+}
+
+.card__route {
+  display: flex;
+  flex-direction: column;
+  row-gap: 63px;
+}
+
+.card__train {
+  max-width: 197px;
+  width: 100%;
+  padding: 60px 20px 90px;
+  background-color: #e4e0e9;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.card__sicle {
+  width: 86px;
+  height: 86px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.card__train_route {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__train_number {
+  align-self: center;
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.route__start {
+  color: #928f94;
+}
+
+.card__route {
+  max-width: 500px;
+  width: 100%;
+  padding: 50px 40px 0;
+}
+
+.route {
+  display: flex;
+  column-gap: 40px;
+  justify-content: space-between;
+}
+
+.route__textbox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.route__time {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.route__city {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-color);
+}
+
+.route__station {
+  font-weight: 400;
+  font-size: 16px;
+  color: #928f94;
+}
+
+.travel__time {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+}
+
+.travel__time span {
+  margin-top: -10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #c4c4c4;
+}
+
+.arrow_reverse {
+  transform: rotate(180deg);
+}
+
+.card__tariffs {
+  border-left: 1px dashed #e5e5e5;
+  padding: 40px 20px 20px 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  max-width: 280px;
+  width: 100%;
+}

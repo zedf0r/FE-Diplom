@@ -1,4 +1,4 @@
-import { Home } from "./screen";
+import { Catalog, Home } from "./screen";
 import { Steps } from "../../components";
 
 export const CatalogPage = () => {
@@ -11,7 +11,8 @@ export const CatalogPage = () => {
   return (
     <main>
       <Home />
-      <Steps steps={steps} activeStep={4} />
+      <Steps steps={steps} activeStep={1} />
+      <Catalog />
     </main>
   );
 };

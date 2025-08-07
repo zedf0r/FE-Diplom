@@ -8,3 +8,7 @@ export { Button } from "./Button/Button";
 
 export { Step } from "./Step/Step";
 export { Steps } from "./Steps/Steps";
+export { Card } from "./Card/Card";
+export { Filter } from "./Filter/Filter";
+
+export { Tariff } from "./Tariff/Tariff";
