@@ -54,7 +54,7 @@ export const Form = () => {
       </div>
       <div className={style.form__button}>
         <Link to="/catalog">
-          <Button type="button" onClick={handleClick} className="button_fill">
+          <Button type="button" onClick={handleClick} className="button__fill">
             Найти билеты
           </Button>
         </Link>

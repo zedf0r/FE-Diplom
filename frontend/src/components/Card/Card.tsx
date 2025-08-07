@@ -1,6 +1,6 @@
-import { ArrowRightIcon, TrainIcon } from "../Icons";
+import { ArrowRightIcon, ServiceIcon, TrainIcon } from "../Icons";
 import style from "./Card.module.css";
-import { Tariff } from "../../components";
+import { Button, Tariff } from "../../components";
 
 export const Card = () => {
   return (
@@ -59,6 +59,18 @@ export const Card = () => {
         <Tariff variant="Плацкарт" count="52" price="2 530" />
         <Tariff variant="Купе" count="24" price="3 820" />
         <Tariff variant="Люкс" count="15" price="4 950" />
+        <div className={style.tariff__service}>
+          <div className={style.serice__svg}>
+            <ServiceIcon />
+          </div>
+          <Button
+            className="button__fill_small"
+            onClick={() => {}}
+            type="button"
+          >
+            Выбрать места
+          </Button>
+        </div>
       </div>
     </article>
   );

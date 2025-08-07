@@ -14,3 +14,4 @@ export { FacebookIcon } from "./FacebookIcon";
 export { TwitterIcon } from "./TwitterIcon";
 export { TrainIcon } from "./TrainIcon";
 export { ArrowRightIcon } from "./ArrowRightIcon";
+export { ServiceIcon } from "./ServiceIcon";

@@ -5,7 +5,7 @@
   border-radius: 5px;
 }
 
-.button_fill {
+.button__fill {
   padding: 17px 68px;
   background-color: #ffa800;
   color: var(--primary-color);
@@ -13,14 +13,8 @@
   border: 1px solid #ffa800;
 }
 
-.button_fill:hover {
+.button__fill:hover {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-}
-
-.button_fill:active {
-  background-color: transparent;
-  border: 1px solid #ffa800;
-  color: #fff;
 }
 
 .button__outline_big {
@@ -30,15 +24,38 @@
 .button__outline_big {
   border: 1px solid #fff;
   color: #fff;
-
   background-color: transparent;
   transition: 0.4s;
+}
+
+.button__fill_small {
+  padding: 5px 10px;
+  border: 1px solid #ffa800;
+  background-color: #ffa800;
+  color: #fff;
+  transition: 0.4s;
+}
+
+.button__fill_small:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.button__fill_small:active {
+  background-color: transparent;
+  border: 1px solid #ffa800;
+  color: #ffa800;
 }
 
 .button__outline_big:hover {
   border: 1px solid #ffca62;
   background-color: #ffca62;
   color: #2d2b2f;
+}
+
+.button__fill:active {
+  background-color: transparent;
+  border: 1px solid #ffa800;
+  color: #fff;
 }
 
 .button__outline_big:active {
