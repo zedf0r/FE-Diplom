@@ -10,7 +10,7 @@ export const Home = () => {
             Вся жизнь -{" "}
             <span className={style.home__info_title_text}>путешествие!</span>
           </h1>
-          <Form />
+          <Form gap="big__gap" />
         </div>
       </div>
     </section>

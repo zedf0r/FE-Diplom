@@ -8,6 +8,15 @@
   row-gap: 92px;
 }
 
+.big__gap {
+  row-gap: 92px;
+}
+
+.small__gap {
+  row-gap: 45px;
+  padding-top: 30px;
+}
+
 .form::before {
   display: block;
   content: "";

@@ -1,0 +1,55 @@
+.filter__title {
+  font-weight: 400;
+  font-size: 30px;
+  color: #fff;
+}
+
+.schedule {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule__box {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+}
+
+.box_reversed {
+  transform: rotate(180deg);
+}
+
+.schedule__button {
+  width: 19px;
+  height: 19px;
+  border: 2px solid #ffffff;
+  display: flex;
+  position: relative;
+  border-radius: 5px;
+}
+
+.schedule__button div {
+  position: absolute;
+  top: 0;
+  height: 0;
+  width: 10px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.schedule__button div:first-child {
+  top: 7px;
+  left: 3px;
+  transform: rotate(90deg);
+}
+
+.schedule__button div:last-child {
+  top: 7px;
+  left: 3px;
+}

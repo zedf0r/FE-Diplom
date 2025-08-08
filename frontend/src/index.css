@@ -82,3 +82,16 @@ body {
   width: 20px;
   height: 20px;
 }
+
+.ant-switch:not(.ant-switch-checked) .ant-switch-handle::before {
+  background-color: #c4c4c4;
+}
+
+.ant-slider-rail {
+  border: 1px solid #c4c4c4;
+  border-radius: 8px !important;
+}
+
+.ant-slider {
+  margin: 0 10px;
+}

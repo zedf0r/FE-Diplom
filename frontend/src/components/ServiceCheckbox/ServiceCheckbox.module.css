@@ -1,0 +1,12 @@
+.service {
+  display: flex;
+  column-gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.service__title {
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+}
