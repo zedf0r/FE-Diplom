@@ -1,0 +1,65 @@
+.ticket {
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 2px 0 rgba(62, 60, 65, 0.25);
+  background: #fff;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 37px;
+}
+
+.ticket__trip {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket__textbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket__city {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--primary-color);
+}
+
+.ticket__station {
+  font-size: 16px;
+  font-weight: 400;
+  color: #928f94;
+  max-width: 100px;
+}
+
+.ticket__text_end {
+  text-align: right;
+}
+
+.ticket__tariff {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.service__svg {
+  color: #e5e5e5;
+}
+
+.ticket__text {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffa800;
+  margin: 0 5px;
+}
+
+.ticket__price {
+  font-size: 16px;
+  font-weight: 400;
+  color: #928f94;
+  text-align: end;
+}
+
+.ticket__valute {
+  font-size: 36px;
+  font-weight: 400;
+}

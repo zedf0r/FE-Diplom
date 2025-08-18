@@ -15,3 +15,4 @@ export { Filter } from "./Filter/Filter";
 export { Tariff } from "./Tariff/Tariff";
 export { ServiceCheckbox } from "./ServiceCheckbox/ServiceCheckbox";
 export { Schedule } from "./Schedule/Schedule";
+export { Ticket } from "./Ticket/Ticket";

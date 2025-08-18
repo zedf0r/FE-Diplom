@@ -1,5 +1,11 @@
 .aside__filter {
   flex: 0 1 calc(30% - 40px);
+  display: flex;
+  flex-direction: column;
+  row-gap: 95px;
+}
+
+.filter {
   background-color: #3e3c41;
   max-height: 1200px;
 }
@@ -52,4 +58,23 @@
 .filter__schedule {
   padding: 33px 35px;
   border-bottom: 1px solid #e5e5e5;
+}
+
+.last_tickets {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.last_tickets__title {
+  font-size: 30px;
+  font-weight: 500;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.tickets {
+  display: flex;
+  flex-direction: column;
+  row-gap: 17px;
 }
