@@ -9,9 +9,6 @@ export const fetchHelper = ({ method, url, body }: TypeFetchOptions) => {
 
   const options: RequestInit = {
     method: method,
-    headers: {
-      "Content-Type": "application/json",
-    },
     ...(body && { body: JSON.stringify(body) }),
   };
 
