@@ -3,7 +3,7 @@ import { Button, DateRange, Selection } from "../";
 import { ArrowReverseIcon } from "../Icons";
 import { useNavigate } from "react-router";
 import classNames from "classnames";
-import { fetchHelper } from "../../helper/fetchHelper";
+// import { fetchHelper } from "../../helper/fetchHelper";
 import { useAppSelector } from "../../services/store";
 
 export const Form = ({ gap }: { gap: string }) => {
@@ -17,10 +17,10 @@ export const Form = ({ gap }: { gap: string }) => {
   };
 
   const fetchDate = async () => {
-    const data = await fetchHelper({
-      method: "GET",
-      url: `/routes?from_city_id=67ceb6548c75f00047c8f78d&to_city_id=67ceb6548c75f00047c8f78e`,
-    });
+    // const data = await fetchHelper({
+    //   method: "GET",
+    //   url: `/routes?from_city_id=67ceb6548c75f00047c8f78d&to_city_id=67ceb6548c75f00047c8f78e`,
+    // });
   };
 
   return (
