@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import style from "./Header.module.css";
 
 export const Header = () => {
@@ -5,7 +6,9 @@ export const Header = () => {
     <header className={style.header}>
       <div className={style.logo}>
         <div className="container">
-          <h3 className={style.logo__text}>Лого</h3>
+          <Link to="/">
+            <h3 className={style.logo__text}>Лого</h3>
+          </Link>
         </div>
       </div>
       <nav className={style.nav}>

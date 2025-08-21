@@ -38,13 +38,13 @@ export const Selection = ({ placeholder }: { placeholder: string }) => {
 
       const formattedData = data.map((city: TypeCityParams) => ({
         value: city._id,
-        label: city.name,
+        label: city.name.toLocaleUpperCase(),
       }));
 
       setOptions(formattedData);
     } catch (error) {
-      throw new Error(`Ошибка получения городов: ${error}`);
       setOptions([]);
+      throw new Error(`Ошибка получения городов: ${error}`);
     } finally {
       setLoading(false);
     }
