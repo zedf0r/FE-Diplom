@@ -13,7 +13,13 @@ type TypeCityParams = {
   name: string;
 };
 
-export const Selection = ({ placeholder }: { placeholder: string }) => {
+export const Selection = ({
+  placeholder,
+  handleSetCity,
+}: {
+  placeholder: string;
+  handleSetCity: (value: string) => void;
+}) => {
   const [options, setOptions] = useState<TypeSelectOption[]>([]);
   const [searchText, setSearchText] = useState("");
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -70,6 +76,7 @@ export const Selection = ({ placeholder }: { placeholder: string }) => {
   };
 
   const handleChange = (value: string) => {
+    handleSetCity(value);
     setSelectedValue(value);
   };
 

@@ -2,59 +2,58 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ADDED_PARAMS } from "./";
 
-type TypeTicketsCityParams = {
-  city: string;
-  id: string;
+type TypeTicketsSearchParams = {
+  departureCityID: string;
+  departureDate: string;
+  arrivalCityID: string;
+  arrivalDate: string;
 };
 
-type TypeTicketsSearchParams = {
-  departureCity: TypeTicketsCityParams;
-  departureDate: string;
-  arrivalCity: TypeTicketsCityParams;
-  arrivalDate: string;
+type TypeTicketsParams = {
+  total_count: number;
+  items: [];
 };
 
 type TypeTiketsState = {
   searchParams: TypeTicketsSearchParams;
-  tickets: [];
+  tickets: TypeTicketsParams;
+  isLoading: boolean;
 };
 
 const initialState: TypeTiketsState = {
   searchParams: {
-    departureCity: {
-      city: "",
-      id: "",
-    },
+    departureCityID: "",
     departureDate: "",
-    arrivalCity: {
-      city: "",
-      id: "",
-    },
+    arrivalCityID: "",
     arrivalDate: "",
   },
-  tickets: [],
+  tickets: {
+    total_count: 0,
+    items: [],
+  },
+  isLoading: true,
 };
 
 export const ticketsSlice = createSlice({
   name: ADDED_PARAMS,
   initialState,
   reducers: {
-    setSearchParams: (
-      state,
-      action: PayloadAction<TypeTicketsSearchParams>
-    ) => {
-      state.searchParams = { ...state, ...action.payload };
+    setTikets: (state, action: PayloadAction<TypeTicketsParams>) => {
+      state.tickets = { ...state, ...action.payload };
     },
-    setDepartureCity: (state, action: PayloadAction<TypeTicketsCityParams>) => {
-      state.searchParams.departureCity = action.payload;
+    setDepartureCity: (state, action: PayloadAction<string>) => {
+      state.searchParams.departureCityID = action.payload;
     },
-    setArrivalCity: (state, action: PayloadAction<TypeTicketsCityParams>) => {
-      state.searchParams.arrivalCity = action.payload;
+    setArrivalCity: (state, action: PayloadAction<string>) => {
+      state.searchParams.arrivalCityID = action.payload;
+    },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
     },
   },
 });
 
-export const { setSearchParams, setDepartureCity, setArrivalCity } =
+export const { setTikets, setDepartureCity, setArrivalCity, setIsLoading } =
   ticketsSlice.actions;
 
 export default ticketsSlice.reducer;

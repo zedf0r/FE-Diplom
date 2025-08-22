@@ -1,0 +1,59 @@
+.route__textbox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card__route {
+  display: flex;
+  flex-direction: column;
+  row-gap: 63px;
+}
+
+.card__route {
+  max-width: 500px;
+  width: 100%;
+  padding: 50px 40px 0;
+}
+
+.route {
+  display: flex;
+  column-gap: 40px;
+  justify-content: space-between;
+}
+
+.route__time {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.route__city {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-color);
+  text-transform: capitalize;
+}
+
+.route__station {
+  font-weight: 400;
+  font-size: 16px;
+  color: #928f94;
+}
+
+.travel__time {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+  color: #ffa800;
+}
+
+.travel__time span {
+  margin-top: -10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #c4c4c4;
+}
+
+.arrow_reverse {
+  transform: rotate(180deg);
+}

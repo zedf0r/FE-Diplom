@@ -12,3 +12,9 @@
   column-gap: 80px;
   align-items: flex-start;
 }
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  row-gap: 47px;
+}
