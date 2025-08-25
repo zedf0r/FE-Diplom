@@ -23,7 +23,7 @@ export const CardRoutes = ({
           </span>
         </div>
         <div className={style.travel__time}>
-          <span>9:42</span>
+          <span>{dayjs(departure.duration * 1000).format("HH:MM")}</span>
           <ArrowRightIcon />
         </div>
         <div className={style.route__textbox}>

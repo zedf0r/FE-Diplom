@@ -11,9 +11,10 @@ type TypeTicketService = {
 type TypeTicketSeats = {
   available_seats: number;
   available_seats_info: {
-    first: number;
-    fourth: number;
-    third: number;
+    first?: number;
+    second?: number;
+    fourth?: number;
+    third?: number;
   };
 };
 
@@ -28,9 +29,10 @@ type TypeTicketPlacePrice = {
 type TypeTicketPrice = {
   min_price: number;
   price_info: {
-    first: TypeTicketPlacePrice;
-    fourth: TypeTicketPlacePrice;
-    third: TypeTicketPlacePrice;
+    first?: TypeTicketPlacePrice;
+    second?: TypeTicketPlacePrice;
+    fourth?: TypeTicketPlacePrice;
+    third?: TypeTicketPlacePrice;
   };
 };
 

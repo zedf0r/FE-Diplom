@@ -2,8 +2,8 @@ import style from "./Tariff.module.css";
 
 type TypeTariffProps = {
   variant: string;
-  count: string;
-  price: string;
+  count: number;
+  price?: number;
 };
 
 export const Tariff = ({ variant, count, price }: TypeTariffProps) => {

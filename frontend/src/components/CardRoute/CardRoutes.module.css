@@ -19,7 +19,6 @@
 .route {
   display: flex;
   column-gap: 40px;
-  justify-content: space-between;
 }
 
 .route__time {
@@ -43,6 +42,7 @@
 .travel__time {
   display: flex;
   flex-direction: column;
+  align-items: center;
   row-gap: 7px;
   color: #ffa800;
 }

@@ -3,7 +3,23 @@ import style from "./Card.module.css";
 import { Button, CardRoutes, Tariff } from "../../components";
 import type { TypeTicket } from "../../types";
 
+type TypeKeySeats = {
+  first: string;
+  second: string;
+  third: string;
+  fourth: string;
+};
+
 export const Card = ({ ticket }: { ticket: TypeTicket }) => {
+  const tariffNames = {
+    first: "Люкс",
+    second: "Купе",
+    third: "Плацкарт",
+    fourth: "Сидячий",
+  };
+
+  const ticketSeats = Object.entries(ticket.available_seats_info);
+
   return (
     <article className={style.card}>
       <div className={style.card__train}>
@@ -11,7 +27,9 @@ export const Card = ({ ticket }: { ticket: TypeTicket }) => {
           <TrainIcon />
         </div>
         <h3 className={style.card__train_number}>
-          {ticket.departure.train.name}
+          {ticket.departure.train.name.includes("undefined")
+            ? "Не найден"
+            : ticket.departure.train.name}
         </h3>
         <div className={style.card__train_route}>
           <span className={style.route__start}>Адлер &rarr;</span>
@@ -21,10 +39,19 @@ export const Card = ({ ticket }: { ticket: TypeTicket }) => {
       </div>
       <CardRoutes departure={ticket.departure} arrival={ticket.arrival} />
       <div className={style.card__tariffs}>
-        <Tariff variant="Сидячий" count="88" price="1 920" />
-        <Tariff variant="Плацкарт" count="52" price="2 530" />
-        <Tariff variant="Купе" count="24" price="3 820" />
-        <Tariff variant="Люкс" count="15" price="4 950" />
+        {ticketSeats.map(([key, count]) => {
+          return (
+            <Tariff
+              key={key}
+              count={count}
+              price={
+                ticket.departure.price_info?.[key as keyof TypeKeySeats]
+                  ?.bottom_price
+              }
+              variant={tariffNames?.[key as keyof TypeKeySeats]}
+            />
+          );
+        })}
         <div className={style.tariff__service}>
           <div className={style.serice__svg}>
             <ServiceIcon />

@@ -3,7 +3,6 @@
   font-weight: 400;
   font-size: 16px;
   align-items: center;
-  justify-content: space-between;
 }
 
 .tarrif__variant {
@@ -14,6 +13,7 @@
 
 .tarrif__count {
   color: #ffa800;
+  margin: 0 15px;
 }
 
 .tarrif__text {
@@ -28,6 +28,7 @@
   color: #2d2b2f;
   display: flex;
   column-gap: 5px;
+  margin-left: auto;
 }
 
 .tarrif__valute {
