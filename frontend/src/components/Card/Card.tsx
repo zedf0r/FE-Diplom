@@ -32,9 +32,8 @@ export const Card = ({ ticket }: { ticket: TypeTicket }) => {
             : ticket.departure.train.name}
         </h3>
         <div className={style.card__train_route}>
-          <span className={style.route__start}>Адлер &rarr;</span>
-          <span>Москва &rarr;</span>
-          <span>Санкт-Петербург</span>
+          <span>{ticket.departure.from.city.name} &rarr;</span>
+          <span>{ticket.departure.to.city.name}</span>
         </div>
       </div>
       <CardRoutes departure={ticket.departure} arrival={ticket.arrival} />

@@ -23,7 +23,12 @@ export const CardRoutes = ({
           </span>
         </div>
         <div className={style.travel__time}>
-          <span>{dayjs(departure.duration * 1000).format("HH:MM")}</span>
+          <span>
+            {dayjs()
+              .startOf("day")
+              .add(departure.duration, "second")
+              .format("HH:MM")}
+          </span>
           <ArrowRightIcon />
         </div>
         <div className={style.route__textbox}>
@@ -51,14 +56,14 @@ export const CardRoutes = ({
               </span>
             </div>
             <div className={style.travel__time}>
-              <span>9:42</span>
+              <span>{dayjs(arrival.duration).format("HH:MM")}</span>
               <div className={style.arrow_reverse}>
                 <ArrowRightIcon />
               </div>
             </div>
             <div className={style.route__textbox}>
               <span className={style.route__time}>
-                {dayjs(arrival.to.datetime * 1000).format("HH:MM")}
+                {dayjs().startOf("day").add(arrival.duration).format("HH:MM")}
               </span>
               <span className={style.route__city}>{arrival.to.city.name}</span>
               <span className={style.route__station}>

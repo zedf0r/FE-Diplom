@@ -95,3 +95,39 @@ body {
 .ant-slider {
   margin: 0 10px;
 }
+
+.ant-pagination-item {
+  border: 1px solid #c4c4c4 !important;
+  background-color: #fff;
+}
+
+.ant-pagination-item:not(.ant-pagination-item-active):hover {
+  background-color: #fff !important;
+  border: 1px solid #ffa800 !important;
+}
+
+.ant-pagination-item:not(.ant-pagination-item-active):hover a {
+  color: #ffa800 !important;
+}
+
+.ant-pagination .ant-pagination-next:hover .ant-pagination-item-link {
+  background-color: #fff !important;
+  color: #ffa800 !important;
+  border: 1px solid #ffa800 !important;
+  cursor: pointer;
+}
+
+.ant-pagination .ant-pagination-next .ant-pagination-item-link {
+  border: 1px solid #c4c4c4 !important;
+}
+
+.ant-pagination .ant-pagination-prev:hover .ant-pagination-item-link {
+  background-color: #fff !important;
+  color: #ffa800 !important;
+  border: 1px solid #ffa800 !important;
+  cursor: pointer;
+}
+
+.ant-pagination .ant-pagination-prev .ant-pagination-item-link {
+  border: 1px solid #c4c4c4 !important;
+}

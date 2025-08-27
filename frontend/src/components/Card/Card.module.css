@@ -30,11 +30,12 @@
 .card__train_route {
   display: flex;
   flex-direction: column;
+  text-transform: capitalize;
 }
 
-.card__train_route span:first-child {
+/* .card__train_route span:first-child {
   color: #928f94;
-}
+} */
 
 .card__train_number {
   align-self: center;

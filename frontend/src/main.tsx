@@ -47,6 +47,19 @@ createRoot(document.getElementById("root")!).render(
                 railBg: "transparent",
                 railHoverBg: "transparent",
               },
+              Pagination: {
+                itemActiveBg: "#FFA800",
+                itemActiveColorDisabled: "#928F94",
+                itemSize: 75,
+                itemSizeSM: 30,
+                colorText: "#928F94",
+                colorPrimaryHover: "none",
+                colorPrimary: "#fff",
+                borderRadius: 5,
+                fontFamily: "Roboto",
+                fontSize: 30,
+                fontWeightStrong: 700,
+              },
             },
           }}
         >
