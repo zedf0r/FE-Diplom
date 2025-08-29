@@ -46,9 +46,9 @@ const filtersSlice = createSlice({
   name: FILTER_EDIT,
   initialState,
   reducers: {
-    onChangeFilter: (
-      state,
-      action: PayloadAction<{ key: keyof TypeFilters; value: any }>
+    onChangeFilter: <K extends keyof TypeFilters>(
+      state: InitialState,
+      action: PayloadAction<{ key: K; value: TypeFilters[K] }>
     ) => {
       const { key, value } = action.payload;
       state.filters[key] = value;
