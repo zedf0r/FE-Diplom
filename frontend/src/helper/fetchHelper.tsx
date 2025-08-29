@@ -4,7 +4,7 @@ type TypeFetchOptions = {
   body?: object;
 };
 
-export const fetchHelper = ({ method, url, body }: TypeFetchOptions) => {
+export const fetchHelper = async ({ method, url, body }: TypeFetchOptions) => {
   const basicURL = "https://students.netoservices.ru/fe-diplom";
 
   const options: RequestInit = {
@@ -12,7 +12,7 @@ export const fetchHelper = ({ method, url, body }: TypeFetchOptions) => {
     ...(body && { body: JSON.stringify(body) }),
   };
 
-  return fetch(basicURL + url, options)
+  return await fetch(basicURL + url, options)
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Ошибка: ${response.status}`);

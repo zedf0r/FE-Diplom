@@ -59,6 +59,10 @@
   font-size: 18px;
   font-weight: 400;
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .filter__count_active {

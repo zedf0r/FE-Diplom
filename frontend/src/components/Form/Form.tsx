@@ -5,17 +5,13 @@ import { useNavigate } from "react-router";
 import classNames from "classnames";
 import { fetchHelper } from "../../helper/fetchHelper";
 import { useAppDispatch, useAppSelector } from "../../services/store";
-import {
-  setArrivalCity,
-  setDepartureCity,
-  setTikets,
-  setIsLoading,
-} from "../../services/tickets/ticketsSlice";
+import { setTikets, setIsLoading } from "../../services/tickets/ticketsSlice";
+import { onChangeFilter } from "../../services/filters/filtersSlice";
 
 export const Form = ({ gap }: { gap: string }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { searchParams } = useAppSelector((state) => state.tickets);
+  const { filters } = useAppSelector((state) => state.filters);
 
   const handleClick = () => {
     fetchDate();
@@ -23,13 +19,12 @@ export const Form = ({ gap }: { gap: string }) => {
   };
 
   const fetchDate = async () => {
+    dispatch(setIsLoading(true));
     try {
-      dispatch(setIsLoading(true));
       const data = await fetchHelper({
         method: "GET",
-        url: `/routes?from_city_id=${searchParams.departureCityID}&to_city_id=${searchParams.arrivalCityID}`,
+        url: `/routes?from_city_id=${filters.from_city_id}&to_city_id=${filters.to_city_id}&limit=${filters.limit}&sort=${filters.sort}`,
       });
-      console.log(data);
       dispatch(
         setTikets({
           total_count: data.total_count,
@@ -43,7 +38,6 @@ export const Form = ({ gap }: { gap: string }) => {
           items: [],
         })
       );
-      dispatch(setIsLoading(false));
       throw new Error(`Ошибка загрузки билетов ${error}`);
     } finally {
       dispatch(setIsLoading(false));
@@ -58,14 +52,18 @@ export const Form = ({ gap }: { gap: string }) => {
           <div className={style.direction__select}>
             <Selection
               placeholder="От куда"
-              handleSetCity={(id: string) => dispatch(setDepartureCity(id))}
+              handleSetCity={(id: string) =>
+                dispatch(onChangeFilter({ key: "from_city_id", value: id }))
+              }
             />
             <button type="button" className={style.button}>
               <ArrowReverseIcon />
             </button>
             <Selection
               placeholder="Куда"
-              handleSetCity={(id: string) => dispatch(setArrivalCity(id))}
+              handleSetCity={(id: string) =>
+                dispatch(onChangeFilter({ key: "to_city_id", value: id }))
+              }
             />
           </div>
         </div>

@@ -1,12 +1,51 @@
 import classNames from "classnames";
 import { Card, Filter } from "../../../../components";
-import { useAppSelector } from "../../../../services/store";
+import { useAppDispatch, useAppSelector } from "../../../../services/store";
 import type { TypeTicket } from "../../../../types";
 import style from "./Catalog.module.css";
 import { Pagination } from "antd";
+import { onChangeFilter } from "../../../../services/filters/filtersSlice";
+import { fetchHelper } from "../../../../helper/fetchHelper";
+import { setTikets } from "../../../../services/tickets/ticketsSlice";
+import { useDebounceFn } from "../../../../hooks";
+import { useEffect } from "react";
 
 export const Catalog = () => {
   const { isLoading, tickets } = useAppSelector((state) => state.tickets);
+  const { filters } = useAppSelector((state) => state.filters);
+
+  const dispatch = useAppDispatch();
+  const counts = ["5", "10", "20"];
+  const options = [
+    { id: 1, value: "date", title: "времени" },
+    { id: 2, value: "price", title: "стоимости" },
+    { id: 3, value: "duration", title: "длительности" },
+  ];
+
+  const handleOnUpdateTickets = async () => {
+    const params = new URLSearchParams();
+
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value && typeof value !== "boolean") {
+        console.log(key, value);
+        params.append(key, value);
+      }
+    });
+
+    console.log(params.toString());
+
+    fetchHelper({ method: "GET", url: `/routes?${params.toString()}` }).then(
+      (data) => {
+        dispatch(setTikets(data));
+      }
+    );
+  };
+
+  const debounceUpdateTickets = useDebounceFn(handleOnUpdateTickets, 300);
+
+  useEffect(() => {
+    debounceUpdateTickets();
+  }, [filters]);
 
   return (
     <section className={style.catalog}>
@@ -22,41 +61,51 @@ export const Catalog = () => {
                 <span className={style.header__text}>
                   сортировать по:{" "}
                   {
-                    <select className={style.filter__select}>
-                      <option
-                        className={style.select__option}
-                        value="timeOption"
-                      >
-                        времени
-                      </option>
-                      <option
-                        className={style.select__option}
-                        value="priceOption"
-                      >
-                        стоимости
-                      </option>
-                      <option
-                        className={style.select__option}
-                        value="durationOption"
-                      >
-                        длительности
-                      </option>
+                    <select
+                      className={style.filter__select}
+                      onChange={(event) => {
+                        dispatch(
+                          onChangeFilter({
+                            key: "sort",
+                            value: event.target.value,
+                          })
+                        );
+                      }}
+                    >
+                      {options.map((option) => {
+                        return (
+                          <option
+                            key={option.id}
+                            className={style.select__option}
+                            value={option.value}
+                          >
+                            {option.title}
+                          </option>
+                        );
+                      })}
                     </select>
                   }
                 </span>
               </div>
               <div className={style.filter__count}>
                 <span className={style.header__text}>показывать по:</span>
-                <span
-                  className={classNames(
-                    style.filter__count_choose,
-                    style.filter__count_active
-                  )}
-                >
-                  5
-                </span>
-                <span className={style.filter__count_choose}>10</span>
-                <span className={style.filter__count_choose}>20</span>
+                {counts.map((count) => {
+                  return (
+                    <span
+                      key={count}
+                      className={classNames(style.filter__count_choose, {
+                        [style.filter__count_active]: filters.limit === count,
+                      })}
+                      onClick={() => {
+                        dispatch(
+                          onChangeFilter({ key: "limit", value: count })
+                        );
+                      }}
+                    >
+                      {count}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </div>
