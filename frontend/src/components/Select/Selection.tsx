@@ -16,15 +16,15 @@ type TypeCityParams = {
 export const Selection = ({
   placeholder,
   handleSetCity,
+  value,
 }: {
   placeholder: string;
-  handleSetCity: (value: string) => void;
+  handleSetCity: (id: string, city: string) => void;
+  value: string;
 }) => {
   const [options, setOptions] = useState<TypeSelectOption[]>([]);
   const [searchText, setSearchText] = useState("");
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(
-    undefined
-  );
+
   const [loading, setLoading] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
@@ -71,15 +71,6 @@ export const Selection = ({
     };
   }, [searchText]);
 
-  const handleSearch = (value: string) => {
-    setSearchText(value);
-  };
-
-  const handleChange = (value: string) => {
-    handleSetCity(value);
-    setSelectedValue(value);
-  };
-
   return (
     <Select
       showSearch
@@ -88,12 +79,15 @@ export const Selection = ({
       style={{ width: "50%", borderRadius: 5, height: 60, fontSize: 18 }}
       placeholder={placeholder}
       optionFilterProp="label"
-      onSearch={handleSearch}
-      onChange={handleChange}
+      onSearch={(value: string) => setSearchText(value)}
+      onChange={(value: string) => {
+        const city = options.find((o) => o.value === value)?.label || "";
+        handleSetCity(value, city);
+      }}
       options={options}
       notFoundContent={loading ? <Spin /> : "Нет результатов"}
       loading={loading}
-      value={selectedValue}
+      value={value === "" ? null : value}
     />
   );
 };

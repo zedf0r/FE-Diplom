@@ -4,19 +4,23 @@ import { FILTER_EDIT } from "./actions";
 
 export type TypeFilters = {
   from_city_id: string;
+  from_city_name: string;
   departureDate: string;
+  to_city_name: string;
   to_city_id: string;
   arrivalDate: string;
-  startDate: string;
-  endDate: string;
-  first: boolean;
-  second: boolean;
-  third: boolean;
-  fourth: boolean;
-  wifi: boolean;
-  express: boolean;
+  date_start?: string;
+  date_end?: string;
+  have_first_class: boolean;
+  have_second_class: boolean;
+  have_third_class: boolean;
+  have_fourth_class: boolean;
+  have_wifi: boolean;
+  is_express: boolean;
   sort: string;
   limit: string;
+  price_from: number;
+  price_to: number;
 };
 
 interface InitialState {
@@ -26,19 +30,23 @@ interface InitialState {
 const initialState: InitialState = {
   filters: {
     from_city_id: "",
+    from_city_name: "",
     departureDate: "",
+    to_city_name: "",
     to_city_id: "",
     arrivalDate: "",
-    startDate: "",
-    endDate: "",
-    first: false,
-    second: false,
-    third: false,
-    fourth: false,
-    wifi: false,
-    express: false,
+    date_start: "",
+    date_end: "",
+    have_first_class: false,
+    have_second_class: false,
+    have_third_class: false,
+    have_fourth_class: false,
+    have_wifi: false,
+    is_express: false,
     sort: "date",
     limit: "5",
+    price_from: 0,
+    price_to: 7000,
   },
 };
 

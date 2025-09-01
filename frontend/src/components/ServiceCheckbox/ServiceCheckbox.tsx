@@ -11,12 +11,12 @@ import { Switch } from "antd";
 import type { SwitchChangeEventHandler } from "antd/es/switch";
 
 const iconMap = {
-  second: CoupeIcon,
-  third: ReservedIcon,
-  fourth: SeatIcon,
-  first: LuxeIcon,
-  wifi: WiFiIcon,
-  express: ExpressIcon,
+  have_second_class: CoupeIcon,
+  have_third_class: ReservedIcon,
+  have_fourth_class: SeatIcon,
+  have_first_class: LuxeIcon,
+  have_wifi: WiFiIcon,
+  is_express: ExpressIcon,
 };
 
 type IconKey = keyof typeof iconMap;

@@ -1,7 +1,7 @@
 import { DatePicker, Slider, type SliderSingleProps } from "antd";
 import style from "./Filter.module.css";
 import dayjs from "dayjs";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ServiceCheckbox } from "../ServiceCheckbox/ServiceCheckbox";
 import { Schedule, Ticket } from "../";
 import { fetchHelper } from "../../helper/fetchHelper";
@@ -13,29 +13,28 @@ import {
 } from "../../services/filters/filtersSlice";
 
 export const Filter = () => {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
   const lastTickets = useAppSelector((state) => state.tickets.lastTickets);
+  const { filters } = useAppSelector((state) => state.filters);
   const dispatch = useAppDispatch();
 
   const services = [
-    { key: 1, service: "second", title: "Купе" },
-    { key: 2, service: "third", title: "Плацкарт" },
-    { key: 3, service: "fourth", title: "Сидячий" },
-    { key: 4, service: "first", title: "Люкс" },
-    { key: 5, service: "wifi", title: "Wi-Fi" },
-    { key: 6, service: "express", title: "Экспресс" },
+    { key: 1, service: "have_second_class", title: "Купе" },
+    { key: 2, service: "have_third_class", title: "Плацкарт" },
+    { key: 3, service: "have_fourth_class", title: "Сидячий" },
+    { key: 4, service: "have_first_class", title: "Люкс" },
+    { key: 5, service: "have_wifi", title: "Wi-Fi" },
+    { key: 6, service: "is_express", title: "Экспресс" },
   ] as const;
 
   const marks: SliderSingleProps["marks"] = {
-    1920: {
+    0: {
       style: {
         color: "#e5e5e5",
         fontSize: 16,
         fontWeight: 400,
         paddingLeft: "10px",
       },
-      label: 1920,
+      label: 0,
     },
     4500: {
       style: { color: "#e5e5e5", fontSize: 16, fontWeight: 400 },
@@ -71,8 +70,19 @@ export const Filter = () => {
             <DatePicker
               placeholder="ДД/ММ/ГГ"
               format={"DD/MM/YY"}
-              value={startDate}
-              onChange={(date) => setStartDate(date)}
+              value={
+                filters.date_start
+                  ? dayjs(filters.date_start, "DD/MM/YY", true)
+                  : null
+              }
+              onChange={(dateString) => {
+                dispatch(
+                  onChangeFilter({
+                    key: "date_start",
+                    value: dateString.toString(),
+                  })
+                );
+              }}
               minDate={dayjs()}
               style={{ width: "100%", height: 43 }}
             />
@@ -82,13 +92,23 @@ export const Filter = () => {
             <DatePicker
               placeholder="ДД/ММ/ГГ"
               format={"DD/MM/YY"}
-              value={endDate}
+              value={
+                filters.date_end
+                  ? dayjs(filters.date_end, "DD/MM/YY", true)
+                  : null
+              }
               style={{ width: "100%", height: 43 }}
-              onChange={(date) => {
-                setEndDate(date);
+              onChange={(dateString) => {
+                dispatch(
+                  onChangeFilter({
+                    key: "date_end",
+                    value: dateString.toString(),
+                  })
+                );
               }}
               disabledDate={(current) => {
-                return startDate && current.isBefore(startDate, "day")
+                return filters.date_start &&
+                  current.isBefore(filters.date_start, "day")
                   ? true
                   : false;
               }}
@@ -116,10 +136,15 @@ export const Filter = () => {
             </div>
             <Slider
               marks={marks}
-              defaultValue={[0, 4000]}
+              defaultValue={[filters.price_from, filters.price_to]}
               step={100}
-              min={1920}
+              min={0}
               max={7000}
+              onChange={(value) => {
+                const [from, to] = value;
+                dispatch(onChangeFilter({ key: "price_from", value: from }));
+                dispatch(onChangeFilter({ key: "price_to", value: to }));
+              }}
               range
             />
           </div>

@@ -6,7 +6,10 @@ import classNames from "classnames";
 import { fetchHelper } from "../../helper/fetchHelper";
 import { useAppDispatch, useAppSelector } from "../../services/store";
 import { setTikets, setIsLoading } from "../../services/tickets/ticketsSlice";
-import { onChangeFilter } from "../../services/filters/filtersSlice";
+import {
+  onChangeFilter,
+  type TypeFilters,
+} from "../../services/filters/filtersSlice";
 
 export const Form = ({ gap }: { gap: string }) => {
   const navigate = useNavigate();
@@ -20,10 +23,18 @@ export const Form = ({ gap }: { gap: string }) => {
 
   const fetchDate = async () => {
     dispatch(setIsLoading(true));
+    const params = new URLSearchParams();
+    console.log(params.toString());
     try {
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value) {
+          params.append(key, String(value));
+        }
+      });
+      console.log(params.toString());
       const data = await fetchHelper({
         method: "GET",
-        url: `/routes?from_city_id=${filters.from_city_id}&to_city_id=${filters.to_city_id}&limit=${filters.limit}&sort=${filters.sort}`,
+        url: `/routes?${params.toString()}`,
       });
       dispatch(
         setTikets({
@@ -44,6 +55,13 @@ export const Form = ({ gap }: { gap: string }) => {
     }
   };
 
+  const handleOnChange = (
+    key: keyof TypeFilters,
+    value: number | string | boolean
+  ) => {
+    dispatch(onChangeFilter({ key: key, value: value }));
+  };
+
   return (
     <form className={classNames(style.form, style[gap])}>
       <div className={style.form__chose}>
@@ -52,25 +70,33 @@ export const Form = ({ gap }: { gap: string }) => {
           <div className={style.direction__select}>
             <Selection
               placeholder="От куда"
-              handleSetCity={(id: string) =>
-                dispatch(onChangeFilter({ key: "from_city_id", value: id }))
-              }
+              handleSetCity={(id: string, city: string) => {
+                handleOnChange("from_city_id", id);
+                handleOnChange("from_city_name", city);
+              }}
+              value={filters.from_city_name}
             />
             <button type="button" className={style.button}>
               <ArrowReverseIcon />
             </button>
             <Selection
               placeholder="Куда"
-              handleSetCity={(id: string) =>
-                dispatch(onChangeFilter({ key: "to_city_id", value: id }))
-              }
+              handleSetCity={(id: string, city: string) => {
+                handleOnChange("to_city_id", id);
+                handleOnChange("to_city_name", city);
+              }}
+              value={filters.to_city_name}
             />
           </div>
         </div>
         <div className={style.form__info}>
           <span className={style.form__title}>Дата</span>
           <div className={style.date__picker}>
-            <DateRange width="calc(50% - 18px)" height="60px" />
+            <DateRange
+              width="calc(50% - 18px)"
+              height="60px"
+              onChange={handleOnChange}
+            />
           </div>
         </div>
       </div>

@@ -30,7 +30,6 @@ export const Catalog = () => {
         params.append(key, String(value));
       }
     });
-    console.log(params.toString());
 
     fetchHelper({ method: "GET", url: `/routes?${params.toString()}` }).then(
       (data) => {
@@ -42,7 +41,6 @@ export const Catalog = () => {
   const debounceUpdateTickets = useDebounceFn(handleOnUpdateTickets, 300);
 
   useEffect(() => {
-    console.log(tickets);
     debounceUpdateTickets();
   }, [filters]);
 

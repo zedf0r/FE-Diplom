@@ -5,7 +5,7 @@ import type { TypeTicket } from "../../types";
 
 type TypeTicketsParams = {
   total_count: number;
-  items: [];
+  items: TypeTicket[];
 };
 
 type TypeTiketsState = {
