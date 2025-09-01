@@ -26,10 +26,11 @@ export const Catalog = () => {
     const params = new URLSearchParams();
 
     Object.entries(filters).forEach(([key, value]) => {
-      if (value && typeof value !== "boolean") {
-        params.append(key, value);
+      if (value) {
+        params.append(key, String(value));
       }
     });
+    console.log(params.toString());
 
     fetchHelper({ method: "GET", url: `/routes?${params.toString()}` }).then(
       (data) => {
@@ -41,6 +42,7 @@ export const Catalog = () => {
   const debounceUpdateTickets = useDebounceFn(handleOnUpdateTickets, 300);
 
   useEffect(() => {
+    console.log(tickets);
     debounceUpdateTickets();
   }, [filters]);
 

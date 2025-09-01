@@ -15,18 +15,13 @@ export const Ticket = (props: TypeTicket) => {
             {props.departure.from.railway_station_name}
           </span>
         </div>
-        <div className={style.ticket__textbox}>
-          <span
-            className={classNames(style.ticket__city, style.ticket__text_end)}
-          >
+        <div
+          className={classNames(style.ticket__textbox, style.ticket__text_end)}
+        >
+          <span className={style.ticket__city}>
             {props.departure.to.city.name}
           </span>
-          <span
-            className={classNames(
-              style.ticket__station,
-              style.ticket__text_end
-            )}
-          >
+          <span className={style.ticket__station}>
             {props.departure.to.railway_station_name}
           </span>
         </div>

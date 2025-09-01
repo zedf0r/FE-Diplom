@@ -8,12 +8,13 @@ import {
   ExpressIcon,
 } from "../Icons";
 import { Switch } from "antd";
+import type { SwitchChangeEventHandler } from "antd/es/switch";
 
 const iconMap = {
-  coupe: CoupeIcon,
-  reserved: ReservedIcon,
-  seat: SeatIcon,
-  luxe: LuxeIcon,
+  second: CoupeIcon,
+  third: ReservedIcon,
+  fourth: SeatIcon,
+  first: LuxeIcon,
   wifi: WiFiIcon,
   express: ExpressIcon,
 };
@@ -23,9 +24,11 @@ type IconKey = keyof typeof iconMap;
 export const ServiceCheckbox = ({
   svg,
   title,
+  onChange,
 }: {
   svg: IconKey;
   title: string;
+  onChange: SwitchChangeEventHandler;
 }) => {
   const IconComponent = iconMap[svg];
   return (
@@ -33,7 +36,7 @@ export const ServiceCheckbox = ({
       <IconComponent />
 
       <span className={style.service__title}>{title}</span>
-      <Switch />
+      <Switch onChange={onChange} />
     </div>
   );
 };

@@ -7,6 +7,10 @@ import { Schedule, Ticket } from "../";
 import { fetchHelper } from "../../helper/fetchHelper";
 import { setLastTickets } from "../../services/tickets/ticketsSlice";
 import { useAppDispatch, useAppSelector } from "../../services/store";
+import {
+  onChangeFilter,
+  type TypeFilters,
+} from "../../services/filters/filtersSlice";
 
 export const Filter = () => {
   const [startDate, setStartDate] = useState();
@@ -14,13 +18,13 @@ export const Filter = () => {
   const lastTickets = useAppSelector((state) => state.tickets.lastTickets);
   const dispatch = useAppDispatch();
 
-  const filters = [
-    { service: "coupe", title: "Купе" },
-    { service: "reserved", title: "Плацкарт" },
-    { service: "seat", title: "Сидячий" },
-    { service: "luxe", title: "Люкс" },
-    { service: "wifi", title: "Wi-Fi" },
-    { service: "express", title: "Экспресс" },
+  const services = [
+    { key: 1, service: "second", title: "Купе" },
+    { key: 2, service: "third", title: "Плацкарт" },
+    { key: 3, service: "fourth", title: "Сидячий" },
+    { key: 4, service: "first", title: "Люкс" },
+    { key: 5, service: "wifi", title: "Wi-Fi" },
+    { key: 6, service: "express", title: "Экспресс" },
   ] as const;
 
   const marks: SliderSingleProps["marks"] = {
@@ -46,6 +50,10 @@ export const Filter = () => {
       },
       label: 7000,
     },
+  };
+
+  const handleChange = (service: keyof TypeFilters, checked: boolean) => {
+    dispatch(onChangeFilter({ key: service, value: checked }));
   };
 
   useEffect(() => {
@@ -88,9 +96,14 @@ export const Filter = () => {
           </div>
         </div>
         <div className={style.filter__services}>
-          {filters.map((filter) => {
+          {services.map((service) => {
             return (
-              <ServiceCheckbox svg={filter.service} title={filter.title} />
+              <ServiceCheckbox
+                key={service.key}
+                svg={service.service}
+                title={service.title}
+                onChange={(checked) => handleChange(service.service, checked)}
+              />
             );
           })}
         </div>
@@ -122,7 +135,7 @@ export const Filter = () => {
         <h3 className={style.last_tickets__title}>Последние новости</h3>
         <div className={style.tickets}>
           {lastTickets.map((ticket) => {
-            return <Ticket {...ticket} />;
+            return <Ticket key={ticket.departure._id} {...ticket} />;
           })}
         </div>
       </div>

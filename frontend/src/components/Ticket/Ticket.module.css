@@ -33,7 +33,7 @@
 }
 
 .ticket__text_end {
-  text-align: right;
+  align-items: flex-end;
 }
 
 .ticket__tariff {

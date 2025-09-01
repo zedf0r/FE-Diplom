@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { FILTER_EDIT } from "./actions";
 
-type TypeFilters = {
+export type TypeFilters = {
   from_city_id: string;
   departureDate: string;
   to_city_id: string;
