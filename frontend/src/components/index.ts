@@ -10,10 +10,11 @@ export { Button } from "./Button/Button";
 export { Step } from "./Step/Step";
 export { Steps } from "./Steps/Steps";
 export { Card } from "./Card/Card";
-export { Filter } from "./Filter/Filter";
+export { Filters } from "./Filter/Filters";
 
 export { Tariff } from "./Tariff/Tariff";
 export { ServiceCheckbox } from "./ServiceCheckbox/ServiceCheckbox";
 export { Schedule } from "./Schedule/Schedule";
 export { Ticket } from "./Ticket/Ticket";
 export { CardRoutes } from "./CardRoute/CardRoutes";
+export { ScheduleSlider } from "./ScheduleSlider/ScheduleSlider";

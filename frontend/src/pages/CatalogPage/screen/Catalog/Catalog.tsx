@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Card, Filter } from "../../../../components";
+import { Card, Filters } from "../../../../components";
 import { useAppDispatch, useAppSelector } from "../../../../services/store";
 import type { TypeTicket } from "../../../../types";
 import style from "./Catalog.module.css";
@@ -47,7 +47,7 @@ export const Catalog = () => {
   return (
     <section className={style.catalog}>
       <div className={style.catalog__container}>
-        <Filter />
+        <Filters />
         <div className={style.cards}>
           <div className={style.header__cards}>
             <span className={style.header__text}>

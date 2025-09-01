@@ -1,9 +1,9 @@
 import { DatePicker, Slider, type SliderSingleProps } from "antd";
-import style from "./Filter.module.css";
+import style from "./Filters.module.css";
 import dayjs from "dayjs";
 import { useEffect } from "react";
 import { ServiceCheckbox } from "../ServiceCheckbox/ServiceCheckbox";
-import { Schedule, Ticket } from "../";
+import { Schedule, Ticket } from "..";
 import { fetchHelper } from "../../helper/fetchHelper";
 import { setLastTickets } from "../../services/tickets/ticketsSlice";
 import { useAppDispatch, useAppSelector } from "../../services/store";
@@ -12,7 +12,7 @@ import {
   type TypeFilters,
 } from "../../services/filters/filtersSlice";
 
-export const Filter = () => {
+export const Filters = () => {
   const lastTickets = useAppSelector((state) => state.tickets.lastTickets);
   const { filters } = useAppSelector((state) => state.filters);
   const dispatch = useAppDispatch();

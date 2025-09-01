@@ -23,8 +23,9 @@ export const Form = ({ gap }: { gap: string }) => {
 
   const fetchDate = async () => {
     dispatch(setIsLoading(true));
+
     const params = new URLSearchParams();
-    console.log(params.toString());
+
     try {
       Object.entries(filters).forEach(([key, value]) => {
         if (value) {

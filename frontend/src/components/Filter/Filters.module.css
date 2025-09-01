@@ -7,7 +7,6 @@
 
 .filter {
   background-color: #3e3c41;
-  max-height: 1200px;
 }
 
 .filter__date {
@@ -58,6 +57,7 @@
 .filter__schedule {
   padding: 33px 35px;
   border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
 }
 
 .last_tickets {
