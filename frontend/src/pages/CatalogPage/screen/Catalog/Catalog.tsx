@@ -27,12 +27,9 @@ export const Catalog = () => {
 
     Object.entries(filters).forEach(([key, value]) => {
       if (value && typeof value !== "boolean") {
-        console.log(key, value);
         params.append(key, value);
       }
     });
-
-    console.log(params.toString());
 
     fetchHelper({ method: "GET", url: `/routes?${params.toString()}` }).then(
       (data) => {

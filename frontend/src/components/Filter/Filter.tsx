@@ -1,13 +1,18 @@
 import { DatePicker, Slider, type SliderSingleProps } from "antd";
 import style from "./Filter.module.css";
 import dayjs from "dayjs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ServiceCheckbox } from "../ServiceCheckbox/ServiceCheckbox";
 import { Schedule, Ticket } from "../";
+import { fetchHelper } from "../../helper/fetchHelper";
+import { setLastTickets } from "../../services/tickets/ticketsSlice";
+import { useAppDispatch, useAppSelector } from "../../services/store";
 
 export const Filter = () => {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
+  const lastTickets = useAppSelector((state) => state.tickets.lastTickets);
+  const dispatch = useAppDispatch();
 
   const filters = [
     { service: "coupe", title: "Купе" },
@@ -43,29 +48,11 @@ export const Filter = () => {
     },
   };
 
-  const tickets = [
-    {
-      departureCity: "Санкт-Петербург",
-      departureStation: "Курский вокзал",
-      arrivalCity: "Самара",
-      arrivalStation: "Московский вокзал",
-      price: "2 500",
-    },
-    {
-      departureCity: "Москва",
-      departureStation: "Курский вокзал",
-      arrivalCity: "Казань",
-      arrivalStation: "Московский вокзал",
-      price: "3 500",
-    },
-    {
-      departureCity: "Казань",
-      departureStation: "Курский вокзал",
-      arrivalCity: "Самара",
-      arrivalStation: "Нижний новгород",
-      price: "3 800",
-    },
-  ];
+  useEffect(() => {
+    fetchHelper({ method: "GET", url: "/routes/last" }).then((data) => {
+      dispatch(setLastTickets(data));
+    });
+  }, [dispatch]);
 
   return (
     <aside className={style.aside__filter}>
@@ -134,7 +121,7 @@ export const Filter = () => {
       <div className={style.last_tickets}>
         <h3 className={style.last_tickets__title}>Последние новости</h3>
         <div className={style.tickets}>
-          {tickets.map((ticket) => {
+          {lastTickets.map((ticket) => {
             return <Ticket {...ticket} />;
           })}
         </div>

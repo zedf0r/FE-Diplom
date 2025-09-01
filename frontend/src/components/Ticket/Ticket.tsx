@@ -1,30 +1,25 @@
 import classNames from "classnames";
 import style from "./Ticket.module.css";
 import { ServiceIcon } from "../Icons";
+import type { TypeTicket } from "../../types";
 
-type TypeTicketProps = {
-  departureCity: string;
-  departureStation: string;
-  arrivalCity: string;
-  arrivalStation: string;
-  price: string;
-};
-
-export const Ticket = (props: TypeTicketProps) => {
+export const Ticket = (props: TypeTicket) => {
   return (
     <article className={style.ticket}>
       <div className={style.ticket__trip}>
         <div className={style.ticket__textbox}>
-          <span className={style.ticket__city}>{props.departureCity}</span>
+          <span className={style.ticket__city}>
+            {props.departure.from.city.name}
+          </span>
           <span className={style.ticket__station}>
-            {props.departureStation}
+            {props.departure.from.railway_station_name}
           </span>
         </div>
         <div className={style.ticket__textbox}>
           <span
             className={classNames(style.ticket__city, style.ticket__text_end)}
           >
-            {props.arrivalCity}
+            {props.departure.to.city.name}
           </span>
           <span
             className={classNames(
@@ -32,7 +27,7 @@ export const Ticket = (props: TypeTicketProps) => {
               style.ticket__text_end
             )}
           >
-            {props.arrivalStation}
+            {props.departure.to.railway_station_name}
           </span>
         </div>
       </div>
@@ -42,7 +37,9 @@ export const Ticket = (props: TypeTicketProps) => {
         </div>
         <p className={style.ticket__price}>
           <span>от</span>
-          <span className={style.ticket__text}>{props.price}</span>
+          <span className={style.ticket__text}>
+            {props.departure.min_price}
+          </span>
           <span className={style.ticket__valute}>&#8381;</span>
         </p>
       </div>

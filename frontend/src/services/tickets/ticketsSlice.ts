@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ADDED_PARAMS } from "./actions";
+import type { TypeTicket } from "../../types";
 
 type TypeTicketsParams = {
   total_count: number;
@@ -10,6 +11,7 @@ type TypeTicketsParams = {
 type TypeTiketsState = {
   tickets: TypeTicketsParams;
   isLoading: boolean;
+  lastTickets: TypeTicket[];
 };
 
 const initialState: TypeTiketsState = {
@@ -18,6 +20,7 @@ const initialState: TypeTiketsState = {
     items: [],
   },
   isLoading: true,
+  lastTickets: [],
 };
 
 export const ticketsSlice = createSlice({
@@ -25,14 +28,17 @@ export const ticketsSlice = createSlice({
   initialState,
   reducers: {
     setTikets: (state, action: PayloadAction<TypeTicketsParams>) => {
-      state.tickets = { ...state, ...action.payload };
+      state.tickets = action.payload;
     },
     setIsLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
+    setLastTickets: (state, action: PayloadAction<TypeTicket[]>) => {
+      state.lastTickets = action.payload;
+    },
   },
 });
 
-export const { setTikets, setIsLoading } = ticketsSlice.actions;
+export const { setTikets, setIsLoading, setLastTickets } = ticketsSlice.actions;
 
 export default ticketsSlice.reducer;
