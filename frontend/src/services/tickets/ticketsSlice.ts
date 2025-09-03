@@ -19,7 +19,7 @@ const initialState: TypeTiketsState = {
     total_count: 0,
     items: [],
   },
-  isLoading: true,
+  isLoading: false,
   lastTickets: [],
 };
 

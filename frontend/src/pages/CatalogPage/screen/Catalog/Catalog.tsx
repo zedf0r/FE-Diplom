@@ -8,18 +8,19 @@ import { onChangeFilter } from "../../../../services/filters/filtersSlice";
 import { fetchHelper } from "../../../../helper/fetchHelper";
 import { setTikets } from "../../../../services/tickets/ticketsSlice";
 import { useDebounceFn } from "../../../../hooks";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export const Catalog = () => {
   const { isLoading, tickets } = useAppSelector((state) => state.tickets);
   const { filters } = useAppSelector((state) => state.filters);
+  const listRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
   const counts = ["5", "10", "20"];
   const options = [
-    { id: 1, value: "date", title: "времени" },
-    { id: 2, value: "price", title: "стоимости" },
-    { id: 3, value: "duration", title: "длительности" },
+    { value: "date", title: "времени" },
+    { value: "price", title: "стоимости" },
+    { value: "duration", title: "длительности" },
   ];
 
   const handleOnUpdateTickets = async () => {
@@ -27,25 +28,42 @@ export const Catalog = () => {
 
     Object.entries(filters).forEach(([key, value]) => {
       if (value) {
-        params.append(key, String(value));
+        if (key !== "from_city_name" && key !== "to_city_name") {
+          params.append(key, String(value));
+        }
       }
     });
+
+    console.log(params.toString());
 
     fetchHelper({ method: "GET", url: `/routes?${params.toString()}` }).then(
       (data) => {
         dispatch(setTikets(data));
+        console.log(data);
       }
     );
   };
 
   const debounceUpdateTickets = useDebounceFn(handleOnUpdateTickets, 300);
 
+  const handleScroolToElement = () => {
+    listRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleOnChange = (page: number, pageSize: number) => {
+    dispatch(
+      onChangeFilter({ key: "offset", value: page * pageSize - pageSize })
+    );
+
+    handleScroolToElement();
+  };
+
   useEffect(() => {
     debounceUpdateTickets();
   }, [filters]);
 
   return (
-    <section className={style.catalog}>
+    <section className={style.catalog} ref={listRef}>
       <div className={style.catalog__container}>
         <Filters />
         <div className={style.cards}>
@@ -69,10 +87,10 @@ export const Catalog = () => {
                         );
                       }}
                     >
-                      {options.map((option) => {
+                      {options.map((option, index) => {
                         return (
                           <option
-                            key={option.id}
+                            key={index}
                             className={style.select__option}
                             value={option.value}
                           >
@@ -109,11 +127,18 @@ export const Catalog = () => {
           {isLoading
             ? "Загрузка"
             : tickets.items?.map((ticket: TypeTicket) => {
-                return (
-                  <Card key={ticket.departure.train._id} ticket={ticket} />
-                );
+                return <Card key={ticket.departure._id} ticket={ticket} />;
               })}
-          <Pagination align="end" defaultCurrent={1} total={50} />
+          {tickets.total_count > Number(filters.limit) ? (
+            <Pagination
+              align="end"
+              defaultCurrent={1}
+              total={tickets.total_count}
+              pageSize={Number(filters.limit)}
+              showSizeChanger={false}
+              onChange={handleOnChange}
+            />
+          ) : null}
         </div>
       </div>
     </section>

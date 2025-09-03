@@ -29,7 +29,9 @@ export const Form = ({ gap }: { gap: string }) => {
     try {
       Object.entries(filters).forEach(([key, value]) => {
         if (value) {
-          params.append(key, String(value));
+          if (key !== "from_city_name" && key !== "to_city_name") {
+            params.append(key, String(value));
+          }
         }
       });
       console.log(params.toString());

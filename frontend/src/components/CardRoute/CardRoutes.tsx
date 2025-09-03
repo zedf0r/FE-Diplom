@@ -56,14 +56,16 @@ export const CardRoutes = ({
               </span>
             </div>
             <div className={style.travel__time}>
-              <span>{dayjs(arrival.duration).format("HH:MM")}</span>
+              <span>
+                {dayjs().startOf("day").add(arrival.duration).format("HH:MM")}
+              </span>
               <div className={style.arrow_reverse}>
                 <ArrowRightIcon />
               </div>
             </div>
             <div className={style.route__textbox}>
               <span className={style.route__time}>
-                {dayjs().startOf("day").add(arrival.duration).format("HH:MM")}
+                {dayjs(arrival.to.datetime).format("HH:MM")}
               </span>
               <span className={style.route__city}>{arrival.to.city.name}</span>
               <span className={style.route__station}>

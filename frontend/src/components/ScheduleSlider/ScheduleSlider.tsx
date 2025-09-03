@@ -1,6 +1,11 @@
 import { Slider, type SliderSingleProps } from "antd";
+// import type { TypeFilters } from "../../services/filters/filtersSlice";
 
-export const ScheduleSlider = () => {
+export const ScheduleSlider = ({
+  onChange,
+}: {
+  onChange: (value: number[]) => void;
+}) => {
   const marks: SliderSingleProps["marks"] = {
     0: {
       style: {
@@ -11,11 +16,11 @@ export const ScheduleSlider = () => {
       },
       label: "0:00",
     },
-    720: {
+    12: {
       style: { color: "#e5e5e5", fontSize: 16, fontWeight: 400 },
       label: "12:00",
     },
-    1440: {
+    24: {
       style: {
         color: "#e5e5e5",
         fontSize: 16,
@@ -26,22 +31,21 @@ export const ScheduleSlider = () => {
     },
   };
 
-  const formatTime = (value?: number) => {
+  const formatTime: NonNullable<SliderSingleProps["tooltip"]>["formatter"] = (
+    value
+  ) => {
     if (!value) return "00:00";
-
-    const hours = Math.floor(value / 60);
-    const minutes = value % 60;
-
-    return `${hours}:${minutes.toString().padStart(2, "0")}`;
+    return `${value}:00`;
   };
 
   return (
     <Slider
       marks={marks}
-      step={15}
+      step={1}
       min={0}
-      max={1440}
-      defaultValue={[1, 1440]}
+      onChange={(value) => onChange(value)}
+      max={24}
+      defaultValue={[0, 24]}
       tooltip={{ formatter: formatTime }}
       range
     />

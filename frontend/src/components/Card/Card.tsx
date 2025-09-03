@@ -45,6 +45,8 @@ export const Card = ({ ticket }: { ticket: TypeTicket }) => {
               count={count}
               price={
                 ticket.departure.price_info?.[key as keyof TypeKeySeats]
+                  ?.bottom_price ||
+                ticket.arrival?.price_info?.[key as keyof TypeKeySeats]
                   ?.bottom_price
               }
               variant={tariffNames?.[key as keyof TypeKeySeats]}

@@ -18,12 +18,12 @@ export const Filters = () => {
   const dispatch = useAppDispatch();
 
   const services = [
-    { key: 1, service: "have_second_class", title: "Купе" },
-    { key: 2, service: "have_third_class", title: "Плацкарт" },
-    { key: 3, service: "have_fourth_class", title: "Сидячий" },
-    { key: 4, service: "have_first_class", title: "Люкс" },
-    { key: 5, service: "have_wifi", title: "Wi-Fi" },
-    { key: 6, service: "is_express", title: "Экспресс" },
+    { service: "have_second_class", title: "Купе" },
+    { service: "have_third_class", title: "Плацкарт" },
+    { service: "have_fourth_class", title: "Сидячий" },
+    { service: "have_first_class", title: "Люкс" },
+    { service: "have_wifi", title: "Wi-Fi" },
+    { service: "is_express", title: "Экспресс" },
   ] as const;
 
   const marks: SliderSingleProps["marks"] = {
@@ -36,9 +36,9 @@ export const Filters = () => {
       },
       label: 0,
     },
-    4500: {
+    3500: {
       style: { color: "#e5e5e5", fontSize: 16, fontWeight: 400 },
-      label: 4500,
+      label: 3500,
     },
     7000: {
       style: {
@@ -53,6 +53,16 @@ export const Filters = () => {
 
   const handleChange = (service: keyof TypeFilters, checked: boolean) => {
     dispatch(onChangeFilter({ key: service, value: checked }));
+  };
+
+  const handleSliderChange = (
+    keyFrom: keyof TypeFilters,
+    keyTo: keyof TypeFilters,
+    value: number[]
+  ) => {
+    const [from, to] = value;
+    dispatch(onChangeFilter({ key: keyFrom, value: from }));
+    dispatch(onChangeFilter({ key: keyTo, value: to }));
   };
 
   useEffect(() => {
@@ -71,14 +81,14 @@ export const Filters = () => {
               placeholder="ДД/ММ/ГГ"
               format={"DD/MM/YY"}
               value={
-                filters.date_start
-                  ? dayjs(filters.date_start, "DD/MM/YY", true)
+                filters.date_start_arrival
+                  ? dayjs(filters.date_start_arrival, "DD/MM/YY", true)
                   : null
               }
-              onChange={(dateString) => {
+              onChange={(_, dateString) => {
                 dispatch(
                   onChangeFilter({
-                    key: "date_start",
+                    key: "date_start_arrival",
                     value: dateString.toString(),
                   })
                 );
@@ -93,22 +103,22 @@ export const Filters = () => {
               placeholder="ДД/ММ/ГГ"
               format={"DD/MM/YY"}
               value={
-                filters.date_end
-                  ? dayjs(filters.date_end, "DD/MM/YY", true)
+                filters.date_end_arrival
+                  ? dayjs(filters.date_end_arrival, "DD/MM/YY", true)
                   : null
               }
               style={{ width: "100%", height: 43 }}
-              onChange={(dateString) => {
+              onChange={(_, dateString) => {
                 dispatch(
                   onChangeFilter({
-                    key: "date_end",
+                    key: "date_end_arrival",
                     value: dateString.toString(),
                   })
                 );
               }}
               disabledDate={(current) => {
-                return filters.date_start &&
-                  current.isBefore(filters.date_start, "day")
+                return filters.date_start_arrival &&
+                  current.isBefore(filters.date_start_arrival, "day")
                   ? true
                   : false;
               }}
@@ -116,10 +126,10 @@ export const Filters = () => {
           </div>
         </div>
         <div className={style.filter__services}>
-          {services.map((service) => {
+          {services.map((service, index) => {
             return (
               <ServiceCheckbox
-                key={service.key}
+                key={index}
                 svg={service.service}
                 title={service.title}
                 onChange={(checked) => handleChange(service.service, checked)}
@@ -136,24 +146,26 @@ export const Filters = () => {
             </div>
             <Slider
               marks={marks}
-              defaultValue={[filters.price_from, filters.price_to]}
+              defaultValue={[0, 7000]}
               step={100}
               min={0}
               max={7000}
               onChange={(value) => {
-                const [from, to] = value;
-                dispatch(onChangeFilter({ key: "price_from", value: from }));
-                dispatch(onChangeFilter({ key: "price_to", value: to }));
+                handleSliderChange("price_from", "price_to", value);
               }}
               range
             />
           </div>
         </div>
         <div className={style.filter__schedule}>
-          <Schedule title="Туда" />
+          <Schedule
+            title="Туда"
+            route="departure"
+            onChange={handleSliderChange}
+          />
         </div>
         <div className={style.filter__schedule}>
-          <Schedule title="Обратно" reversed />
+          <Schedule title="Обратно" onChange={handleSliderChange} reversed />
         </div>
       </div>
       <div className={style.last_tickets}>
