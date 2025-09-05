@@ -12,6 +12,7 @@ type TypeTiketsState = {
   tickets: TypeTicketsParams;
   isLoading: boolean;
   lastTickets: TypeTicket[];
+  ticket: TypeTicket | null;
 };
 
 const initialState: TypeTiketsState = {
@@ -21,6 +22,7 @@ const initialState: TypeTiketsState = {
   },
   isLoading: false,
   lastTickets: [],
+  ticket: null,
 };
 
 export const ticketsSlice = createSlice({
@@ -36,9 +38,13 @@ export const ticketsSlice = createSlice({
     setLastTickets: (state, action: PayloadAction<TypeTicket[]>) => {
       state.lastTickets = action.payload;
     },
+    setTicket: (state, action: PayloadAction<TypeTicket>) => {
+      state.ticket = action.payload;
+    },
   },
 });
 
-export const { setTikets, setIsLoading, setLastTickets } = ticketsSlice.actions;
+export const { setTikets, setIsLoading, setLastTickets, setTicket } =
+  ticketsSlice.actions;
 
 export default ticketsSlice.reducer;

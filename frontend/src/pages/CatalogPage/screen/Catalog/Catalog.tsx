@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Card, Filters } from "../../../../components";
+import { Item, Filters } from "../../../../components";
 import { useAppDispatch, useAppSelector } from "../../../../services/store";
 import type { TypeTicket } from "../../../../types";
 import style from "./Catalog.module.css";
@@ -127,7 +127,7 @@ export const Catalog = () => {
           {isLoading
             ? "Загрузка"
             : tickets.items?.map((ticket: TypeTicket) => {
-                return <Card key={ticket.departure._id} ticket={ticket} />;
+                return <Item key={ticket.departure._id} ticket={ticket} />;
               })}
           {tickets.total_count > Number(filters.limit) ? (
             <Pagination

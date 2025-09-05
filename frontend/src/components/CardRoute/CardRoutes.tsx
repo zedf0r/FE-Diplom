@@ -1,82 +1,79 @@
-import type { TypeTicketRoute } from "../../types";
+import classNames from "classnames";
+import type { TypeTicket, TypeTicketRoute } from "../../types";
 import { ArrowRightIcon } from "../Icons";
 import style from "./CardRoutes.module.css";
 import dayjs from "dayjs";
 
-export const CardRoutes = ({
-  departure,
-  arrival,
-}: {
-  departure: TypeTicketRoute;
-  arrival?: TypeTicketRoute;
-}) => {
+export const CardRoutes = ({ ticket }: { ticket: TypeTicket }) => {
   return (
     <div className={style.card__route}>
-      <div className={style.route}>
-        <div className={style.route__textbox}>
-          <span className={style.route__time}>
-            {dayjs(departure.from.datetime * 1000).format("HH:MM")}
-          </span>
-          <span className={style.route__city}>{departure.from.city.name}</span>
-          <span className={style.route__station}>
-            {departure.from.railway_station_name}
-          </span>
-        </div>
+      <Route route={ticket.departure} duration />
+      {ticket.arrival ? (
+        <Route route={ticket.arrival} duration reverse />
+      ) : null}
+    </div>
+  );
+};
+
+export const Route = ({
+  route,
+  reverse,
+  duration,
+}: {
+  route?: TypeTicketRoute;
+  reverse?: boolean;
+  duration?: boolean;
+}) => {
+  return (
+    <div className={style.route}>
+      <div className={style.route__textbox}>
+        <span className={style.route__time}>
+          {dayjs(route?.to.datetime ? route?.to.datetime * 1000 : null).format(
+            "HH:MM"
+          )}
+        </span>
+        <span className={style.route__city}>{route?.from.city.name}</span>
+        <span className={style.route__station}>
+          {route?.from.railway_station_name}
+        </span>
+      </div>
+
+      {duration ? (
         <div className={style.travel__time}>
           <span>
             {dayjs()
               .startOf("day")
-              .add(departure.duration, "second")
+              .add(route?.duration ? route?.duration : 0, "second")
               .format("HH:MM")}
           </span>
-          <ArrowRightIcon />
-        </div>
-        <div className={style.route__textbox}>
-          <span className={style.route__time}>
-            {dayjs(departure.to.datetime * 1000).format("HH:MM")}
-          </span>
-          <span className={style.route__city}>{departure.to.city.name}</span>
-          <span className={style.route__station}>
-            {departure.to.railway_station_name}
-          </span>
-        </div>
-      </div>
-      {arrival ? (
-        <div className={style.route__back}>
-          <div className={style.route}>
-            <div className={style.route__textbox}>
-              <span className={style.route__time}>
-                {dayjs(arrival.from.datetime * 1000).format("HH:MM")}
-              </span>
-              <span className={style.route__city}>
-                {arrival.from.city.name}
-              </span>
-              <span className={style.route__station}>
-                {arrival.from.railway_station_name}
-              </span>
-            </div>
-            <div className={style.travel__time}>
-              <span>
-                {dayjs().startOf("day").add(arrival.duration).format("HH:MM")}
-              </span>
-              <div className={style.arrow_reverse}>
-                <ArrowRightIcon />
-              </div>
-            </div>
-            <div className={style.route__textbox}>
-              <span className={style.route__time}>
-                {dayjs(arrival.to.datetime).format("HH:MM")}
-              </span>
-              <span className={style.route__city}>{arrival.to.city.name}</span>
-              <span className={style.route__station}>
-                {arrival.to.railway_station_name}
-              </span>
-            </div>
+          <div
+            className={classNames(style.arrow, {
+              [style.arrow_reverse]: reverse,
+            })}
+          >
+            <ArrowRightIcon />
           </div>
         </div>
       ) : (
-        ""
+        <div
+          className={classNames(style.arrow, {
+            [style.arrow_reverse]: reverse,
+          })}
+        >
+          <ArrowRightIcon />
+        </div>
       )}
+      <div className={style.route__textbox}>
+        <span className={style.route__time}>
+          {dayjs(route?.to.datetime ? route?.to.datetime * 1000 : null).format(
+            "HH:MM"
+          )}
+        </span>
+        <span className={style.route__city}>{route?.to.city.name}</span>
+        <span className={style.route__station}>
+          {route?.to.railway_station_name}
+        </span>
+      </div>
     </div>
   );
 };

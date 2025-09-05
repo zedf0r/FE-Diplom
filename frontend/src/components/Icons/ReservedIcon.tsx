@@ -1,8 +1,15 @@
-export const ReservedIcon = () => {
+export const ReservedIcon = ({
+  size,
+}: {
+  size: {
+    width: string;
+    height: string;
+  };
+}) => {
   return (
     <svg
-      width="18"
-      height="18"
+      width={size.width}
+      height={size.height}
       viewBox="0 0 18 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

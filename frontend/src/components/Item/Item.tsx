@@ -1,7 +1,10 @@
-import { ServiceIcon, TrainIcon } from "../Icons";
-import style from "./Card.module.css";
-import { Button, CardRoutes, Tariff } from "../../components";
+import { ServiceIcon } from "../Icons";
+import style from "./Item.module.css";
+import { Button, CardRoutes, CardTrainInfo, Tariff } from "..";
 import type { TypeTicket } from "../../types";
+import { useNavigate } from "react-router";
+import { useAppDispatch } from "../../services/store";
+import { setTicket } from "../../services/tickets/ticketsSlice";
 
 type TypeKeySeats = {
   first: string;
@@ -10,7 +13,9 @@ type TypeKeySeats = {
   fourth: string;
 };
 
-export const Card = ({ ticket }: { ticket: TypeTicket }) => {
+export const Item = ({ ticket }: { ticket: TypeTicket }) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const tariffNames = {
     first: "Люкс",
     second: "Купе",
@@ -22,21 +27,8 @@ export const Card = ({ ticket }: { ticket: TypeTicket }) => {
 
   return (
     <article className={style.card}>
-      <div className={style.card__train}>
-        <div className={style.card__sicle}>
-          <TrainIcon />
-        </div>
-        <h3 className={style.card__train_number}>
-          {ticket.departure.train.name.includes("undefined")
-            ? "Не найден"
-            : ticket.departure.train.name}
-        </h3>
-        <div className={style.card__train_route}>
-          <span>{ticket.departure.from.city.name} &rarr;</span>
-          <span>{ticket.departure.to.city.name}</span>
-        </div>
-      </div>
-      <CardRoutes departure={ticket.departure} arrival={ticket.arrival} />
+      <CardTrainInfo ticket={ticket} />
+      <CardRoutes ticket={ticket} />
       <div className={style.card__tariffs}>
         {ticketSeats.map(([key, count]) => {
           return (
@@ -59,7 +51,10 @@ export const Card = ({ ticket }: { ticket: TypeTicket }) => {
           </div>
           <Button
             className="button__fill_small"
-            onClick={() => {}}
+            onClick={() => {
+              dispatch(setTicket(ticket));
+              navigate(`${ticket.departure._id}`);
+            }}
             type="button"
           >
             Выбрать места

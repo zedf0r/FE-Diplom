@@ -22,3 +22,4 @@ export { LuxeIcon } from "./LuxeIcon";
 export { WiFiIcon } from "./WiFiIcon";
 export { ExpressIcon } from "./ExpressIcon";
 export { ScheduleBox } from "./ScheduleBox";
+export { ClockIcon } from "./ClockIcon";

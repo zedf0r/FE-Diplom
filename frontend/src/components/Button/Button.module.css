@@ -6,7 +6,7 @@
 }
 
 .button__fill {
-  padding: 17px 68px;
+  padding: 15px 68px;
   background-color: #ffa800;
   color: var(--primary-color);
   transition: 0.4s;
@@ -17,19 +17,26 @@
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-.button__outline_big {
-  padding: 16px 75px;
+.button__outline_big,
+.button__outline_big_black {
+  padding: 15px 75px;
 }
 
-.button__outline_big {
+.button__outline_big,
+.button__outline_big_black {
   border: 1px solid #fff;
   color: #fff;
   background-color: transparent;
   transition: 0.4s;
 }
 
+.button__outline_big_black {
+  border: 1px solid #000;
+  color: var(--primary-color);
+}
+
 .button__fill_small {
-  padding: 5px 10px;
+  padding: 15px 10px;
   border: 1px solid #ffa800;
   background-color: #ffa800;
   color: #fff;
@@ -46,7 +53,8 @@
   color: #ffa800;
 }
 
-.button__outline_big:hover {
+.button__outline_big:hover,
+.button__outline_big_black:hover {
   border: 1px solid #ffca62;
   background-color: #ffca62;
   color: #2d2b2f;
@@ -64,7 +72,7 @@
 }
 
 .button__outline_small {
-  padding: 17px 15px;
+  padding: 15px 15px;
   text-transform: uppercase;
   color: #e5e5e5;
   border: 1px solid #e5e5e5;

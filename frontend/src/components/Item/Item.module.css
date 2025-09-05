@@ -1,0 +1,29 @@
+.card {
+  display: flex;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+  flex: 0 1 70%;
+}
+
+.card__tariffs {
+  border-left: 1px dashed #e5e5e5;
+  padding: 40px 20px 20px 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+  max-width: 280px;
+  width: 100%;
+}
+
+.tariff__service {
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 100%;
+}
+
+.serice__svg {
+  align-self: flex-end;
+  color: #c4c4c4;
+}

@@ -63,7 +63,7 @@ const initialState: InitialState = {
     limit: "5",
     offset: 0,
     price_from: 0,
-    price_to: 0,
+    price_to: 7000,
     start_departure_hour_from: 0,
     start_departure_hour_to: 0,
     start_arrival_hour_from: 0,

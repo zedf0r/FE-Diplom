@@ -1,0 +1,50 @@
+.count__tickets {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.tickets__variant_title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--primary-color);
+  padding-left: 19px;
+}
+
+.tickets__box {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.tickets__box {
+  padding: 20px 40px 55px 35px;
+  display: flex;
+  flex: 0 1 33.333%;
+  flex-direction: column;
+  row-gap: 23px;
+}
+
+.count__box {
+  padding: 15px 22px 15px 17px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+}
+
+.count__box span {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-color);
+}
+
+.tickets__box p {
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+}
+
+.ticket {
+  display: flex;
+}
+
+.card__type_van {
+  padding: 27px 0 80px;
+}

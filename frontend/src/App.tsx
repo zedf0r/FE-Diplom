@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import { Layout } from "./components";
-import { HomePage, CatalogPage } from "./pages";
+import { HomePage, CatalogPage, CardPage } from "./pages";
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/catalog/:id" element={<CardPage />} />
       </Route>
     </Routes>
   );

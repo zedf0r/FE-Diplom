@@ -1,7 +1,7 @@
-import { Catalog } from "./screen";
-import { Steps, Home } from "../../components";
+import { Home, Steps } from "../../components";
+import { SeatSelectionScreen } from "./screen/SeatSelectionScreen/SeatSelectionScreen";
 
-export const CatalogPage = () => {
+export const CardPage = () => {
   const steps = [
     { id: 1, title: "Билеты" },
     { id: 2, title: "Пассажиры" },
@@ -12,7 +12,7 @@ export const CatalogPage = () => {
     <main>
       <Home />
       <Steps steps={steps} activeStep={1} />
-      <Catalog />
+      <SeatSelectionScreen />
     </main>
   );
 };

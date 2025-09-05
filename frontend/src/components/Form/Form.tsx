@@ -34,7 +34,7 @@ export const Form = ({ gap }: { gap: string }) => {
           }
         }
       });
-      console.log(params.toString());
+
       const data = await fetchHelper({
         method: "GET",
         url: `/routes?${params.toString()}`,

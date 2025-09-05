@@ -1,8 +1,15 @@
-export const LuxeIcon = () => {
+export const LuxeIcon = ({
+  size,
+}: {
+  size: {
+    width: string;
+    height: string;
+  };
+}) => {
   return (
     <svg
-      width="22"
-      height="20"
+      width={size.width}
+      height={size.height}
       viewBox="0 0 22 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

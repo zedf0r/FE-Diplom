@@ -132,6 +132,7 @@ export const Filters = () => {
                 key={index}
                 svg={service.service}
                 title={service.title}
+                checked={filters[service.service]}
                 onChange={(checked) => handleChange(service.service, checked)}
               />
             );
@@ -146,7 +147,7 @@ export const Filters = () => {
             </div>
             <Slider
               marks={marks}
-              defaultValue={[0, 7000]}
+              defaultValue={[filters.price_from, filters.price_to]}
               step={100}
               min={0}
               max={7000}

@@ -1,8 +1,15 @@
-export const WiFiIcon = () => {
+export const WiFiIcon = ({
+  size,
+}: {
+  size: {
+    width: string;
+    height: string;
+  };
+}) => {
   return (
     <svg
-      width="24"
-      height="19"
+      width={size.width}
+      height={size.height}
       viewBox="0 0 24 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
