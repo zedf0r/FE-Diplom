@@ -1,13 +1,33 @@
 import { useAppSelector } from "../../services/store";
-import { Button, Route, CountTickets, Van } from "..";
+import { Button, Route, CountTickets, VanType, Van } from "..";
 import { ArrowRightIcon, ClockIcon, TrainIcon } from "../Icons";
 import style from "./SeatSelectionCard.module.css";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { formatDuration } from "../../helper/formatDuration";
+import { useEffect, useState } from "react";
+import { fetchHelper } from "../../helper/fetchHelper";
+import type { TypeSeatsArray } from "../../types";
 
 export const SeatSelectionCard = () => {
+  const [activeType, setActiveType] = useState<string | undefined>(undefined);
   const navigate = useNavigate();
   const ticket = useAppSelector((state) => state.tickets.ticket);
+  const [seats, setSeats] = useState<TypeSeatsArray | undefined>(undefined);
+  const [isloading, setIsLoading] = useState(false);
+  const { id } = useParams();
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetchHelper({ method: "GET", url: `/routes/${id}/seats` })
+      .then((data) => {
+        console.log(data);
+        setSeats(data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [id]);
+
   return (
     <div className={style.card}>
       <h3 className={style.card__title}>Выбор мест</h3>
@@ -52,17 +72,22 @@ export const SeatSelectionCard = () => {
             <div className={style.duration}>
               <ClockIcon size={{ width: "30", height: "30" }} />
               <div className={style.duration__text}>
-                {formatDuration(
-                  ticket?.departure.duration ? ticket.departure.duration : 0
-                )}
+                {formatDuration(ticket?.departure.duration ?? 0)}
               </div>
             </div>
           </div>
           <div className={style.card__tickets__variant}>
             <CountTickets />
           </div>
-          <div className={style.card__type_van}>
-            <Van />
+          <div>
+            <VanType activeType={activeType} setActiveType={setActiveType} />
+          </div>
+          <div>
+            {isloading ? (
+              <div>Загрузка мест</div>
+            ) : (
+              <Van seats={seats} activeType={activeType} />
+            )}
           </div>
         </div>
       </div>

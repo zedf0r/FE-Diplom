@@ -23,3 +23,6 @@ export { WiFiIcon } from "./WiFiIcon";
 export { ExpressIcon } from "./ExpressIcon";
 export { ScheduleBox } from "./ScheduleBox";
 export { ClockIcon } from "./ClockIcon";
+export { TowelIcon } from "./TowelIcon";
+export { CupIcon } from "./CupIcon";
+export { ConditionerIcon } from "./ConditionerIcon";

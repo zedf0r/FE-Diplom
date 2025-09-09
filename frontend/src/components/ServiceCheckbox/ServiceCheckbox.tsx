@@ -47,7 +47,9 @@ export const ServiceCheckbox = ({
   const { component: IconComponent, size } = iconMap[svg];
   return (
     <div className={style.service}>
-      <IconComponent size={{ width: size.width, height: size.height }} />
+      <div className={style.svg}>
+        <IconComponent size={{ width: size.width, height: size.height }} />
+      </div>
 
       <span className={style.service__title}>{title}</span>
       <Switch onChange={onChange} checked={checked} />

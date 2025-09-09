@@ -23,4 +23,6 @@ export { ScheduleSlider } from "./ScheduleSlider/ScheduleSlider";
 
 export { SeatSelectionCard } from "./SeatSelectionCard/SeatSelectionCard";
 export { CountTickets } from "./CountTickets/CountTickets";
+export { VanType } from "./VanType/VanType";
 export { Van } from "./Van/Van";
+export { VanInfo } from "./VanInfo/VanInfo";

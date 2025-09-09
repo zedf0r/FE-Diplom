@@ -1,0 +1,106 @@
+.van__info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.van__info__header_text {
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+  display: flex;
+  column-gap: 7px;
+}
+
+.van__info__header_text_black {
+  color: #000;
+}
+
+.van__info_text {
+  font-weight: 400;
+  font-size: 24px;
+  color: #000;
+  display: flex;
+  column-gap: 7px;
+}
+
+.van__info_text_bold {
+  font-weight: 700;
+}
+
+.van__info_text_gray {
+  color: #928f94;
+}
+
+.van__info__header_text_gray {
+  text-transform: uppercase;
+  color: #c4c4c4;
+}
+
+.van__info__header__box {
+  display: flex;
+  column-gap: 7px;
+}
+
+.van__info__container {
+  display: flex;
+  column-gap: 13px;
+}
+
+.van__info__service__box {
+  border: 1px solid #292929;
+  border-radius: 5px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.van__info__count_places {
+  background: #f3f3f3;
+  border-radius: 5px;
+  max-width: 200px;
+  padding: 16px 13px 11px 16px;
+}
+
+.van__info__inner {
+  display: flex;
+  flex-direction: column;
+  row-gap: 17px;
+}
+
+.van__seats_info {
+  padding: 33px 59px 21px 85px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.van__info__service__box:hover {
+  background: #ffa800;
+  cursor: pointer;
+  position: relative;
+}
+
+.van__info__service_tip {
+  display: none;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  color: #292929;
+  position: absolute;
+  bottom: -40px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background: #e5e5e5;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.van__info__service_tip_active {
+  display: block;
+}
+
+.van__info__service__box {
+}

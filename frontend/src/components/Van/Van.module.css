@@ -1,6 +1,78 @@
-.van__title {
-  padding-left: 20px;
+.van__seats {
+  display: flex;
+}
+
+.van__seats_numerical {
+  background-color: #ffd98f;
+  padding: 30px 52px 32px 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 190px;
+  align-self: flex-start;
+}
+
+.van__numerical__title {
   font-weight: 700;
-  font-size: 30px;
-  color: var(--primary-color);
+  font-size: 72px;
+  color: #292929;
+  height: 70px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.van__numerical__text {
+  font-weight: 400;
+  font-size: 24px;
+  color: #292929;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.van__seats_info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.van__number {
+  background-color: rgba(255, 168, 0, 0.44);
+  width: 100%;
+  padding: 5px 10px 5px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.van__number__count_title {
+  font-weight: 400;
+  font-size: 18px;
+  color: #2d2b2f;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.van__number__count_text {
+  font-weight: 700;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+}
+
+.van__count_text_active {
+  color: #fff;
+}
+
+.van__number__count_text_small {
+  font-weight: 400;
+  font-size: 16px;
+  color: #292929;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
