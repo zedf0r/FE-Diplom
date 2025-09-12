@@ -100,7 +100,7 @@ const VanInfoServices = ({
     },
   ];
   return (
-    <div className={style.van__info}>
+    <div className={classNames(style.van__info, style.van__info_service)}>
       <div className={style.van__info__inner}>
         <div className={style.van__info__header__box}>
           <p className={style.van__info__header_text}>Обслуживание</p>

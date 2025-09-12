@@ -28,6 +28,10 @@ export const SeatSelectionCard = () => {
       });
   }, [id]);
 
+  const handleOnClick = () => {
+    navigate(`/catalog/${id}/passengers`);
+  };
+
   return (
     <div className={style.card}>
       <h3 className={style.card__title}>Выбор мест</h3>
@@ -89,7 +93,20 @@ export const SeatSelectionCard = () => {
               <Van seats={seats} activeType={activeType} />
             )}
           </div>
+          <div className={style.card__total__price}>
+            <span className={style.total__price_text}>8 080</span>
+            <span className={style.total__price_valute}>₽</span>
+          </div>
         </div>
+      </div>
+      <div className={style.card__button}>
+        <Button
+          onClick={handleOnClick}
+          type="button"
+          className="button__fill_white"
+        >
+          Далее
+        </Button>
       </div>
     </div>
   );

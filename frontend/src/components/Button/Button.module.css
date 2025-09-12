@@ -5,7 +5,8 @@
   border-radius: 5px;
 }
 
-.button__fill {
+.button__fill,
+.button__fill_white {
   padding: 15px 68px;
   background-color: #ffa800;
   color: var(--primary-color);
@@ -13,7 +14,12 @@
   border: 1px solid #ffa800;
 }
 
-.button__fill:hover {
+.button__fill_white {
+  color: #fff;
+}
+
+.button__fill:hover,
+.button__fill_white:hover {
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -60,10 +66,11 @@
   color: #2d2b2f;
 }
 
-.button__fill:active {
+.button__fill:active,
+.button__fill_white:active {
   background-color: transparent;
   border: 1px solid #ffa800;
-  color: #fff;
+  color: #ffa800;
 }
 
 .button__outline_big:active {

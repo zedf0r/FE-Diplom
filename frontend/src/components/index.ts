@@ -26,3 +26,6 @@ export { CountTickets } from "./CountTickets/CountTickets";
 export { VanType } from "./VanType/VanType";
 export { Van } from "./Van/Van";
 export { VanInfo } from "./VanInfo/VanInfo";
+
+export { DetailTrip } from "./DetailTrip/DetailTrip";
+export { Direction } from "./Direction/Direction";

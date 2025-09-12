@@ -28,9 +28,9 @@ export const Route = ({
     <div className={style.route}>
       <div className={style.route__textbox}>
         <span className={style.route__time}>
-          {dayjs(route?.to.datetime ? route?.to.datetime * 1000 : null).format(
-            "HH:MM"
-          )}
+          {dayjs(
+            route?.from.datetime ? route?.from.datetime * 1000 : null
+          ).format("HH:mm")}
         </span>
         <span className={style.route__city}>{route?.from.city.name}</span>
         <span className={style.route__station}>
@@ -44,7 +44,7 @@ export const Route = ({
             {dayjs()
               .startOf("day")
               .add(route?.duration ? route?.duration : 0, "second")
-              .format("HH:MM")}
+              .format("HH:mm")}
           </span>
           <div
             className={classNames(style.arrow, {
@@ -66,7 +66,7 @@ export const Route = ({
       <div className={style.route__textbox}>
         <span className={style.route__time}>
           {dayjs(route?.to.datetime ? route?.to.datetime * 1000 : null).format(
-            "HH:MM"
+            "HH:mm"
           )}
         </span>
         <span className={style.route__city}>{route?.to.city.name}</span>

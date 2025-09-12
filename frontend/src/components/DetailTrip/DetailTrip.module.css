@@ -1,0 +1,146 @@
+.aside {
+  background-color: #3e3c41;
+}
+
+.aside__title {
+  font-weight: 500;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #e5e5e5;
+  padding: 35px 44px 30px;
+  position: relative;
+}
+
+.aside__title::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+}
+
+.aside__trip {
+  padding: 22px 28px;
+  position: relative;
+}
+
+.aside__trip::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+}
+
+.trip__info {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  row-gap: 70px;
+  height: 0;
+  transition: 0.4s;
+}
+
+.trip__info_open {
+  padding: 50px 0 53px;
+  height: 400px;
+}
+
+.trip__info::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+}
+
+.info__train {
+  display: flex;
+  flex-direction: column;
+  row-gap: 22px;
+}
+
+.train__params {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.train__params_text {
+  font-weight: 400;
+  font-size: 18px;
+  color: #e5e5e5;
+}
+
+.train__citis {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: flex-end;
+  text-transform: capitalize;
+}
+
+.train__params_name {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+}
+
+.train__citis span {
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+}
+
+.route {
+  display: flex;
+  flex-direction: column;
+  row-gap: 17px;
+}
+
+.route__time {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+}
+
+.route__date {
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+}
+
+.route__datetime {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.route__places {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  max-width: 85px;
+}
+
+.route__city {
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.route__station {
+  font-size: 16px;
+  color: #928f94;
+  font-weight: 400;
+}

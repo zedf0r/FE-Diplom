@@ -1,7 +1,7 @@
 import { DatePicker, Slider, type SliderSingleProps } from "antd";
 import style from "./Filters.module.css";
 import dayjs from "dayjs";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ServiceCheckbox } from "../ServiceCheckbox/ServiceCheckbox";
 import { Schedule, Ticket } from "..";
 import { fetchHelper } from "../../helper/fetchHelper";
@@ -13,6 +13,10 @@ import {
 } from "../../services/filters/filtersSlice";
 
 export const Filters = () => {
+  const [isActive, setIsActive] = useState({
+    departure: false,
+    arrival: false,
+  });
   const lastTickets = useAppSelector((state) => state.tickets.lastTickets);
   const { filters } = useAppSelector((state) => state.filters);
   const dispatch = useAppDispatch();
@@ -55,6 +59,10 @@ export const Filters = () => {
     dispatch(onChangeFilter({ key: service, value: checked }));
   };
 
+  const handleOnClick = (route: "departure" | "arrival") => {
+    setIsActive((prevState) => ({ ...prevState, [route]: !prevState[route] }));
+  };
+
   const handleSliderChange = (
     keyFrom: keyof TypeFilters,
     keyTo: keyof TypeFilters,
@@ -82,14 +90,14 @@ export const Filters = () => {
               format={"DD/MM/YY"}
               value={
                 filters.date_start_arrival
-                  ? dayjs(filters.date_start_arrival, "DD/MM/YY", true)
+                  ? dayjs(filters.date_start_arrival, "YYYY/MM/DD")
                   : null
               }
-              onChange={(_, dateString) => {
+              onChange={(date) => {
                 dispatch(
                   onChangeFilter({
                     key: "date_start_arrival",
-                    value: dateString.toString(),
+                    value: date ? date.format("YYYY-MM-DD") : "",
                   })
                 );
               }}
@@ -104,15 +112,15 @@ export const Filters = () => {
               format={"DD/MM/YY"}
               value={
                 filters.date_end_arrival
-                  ? dayjs(filters.date_end_arrival, "DD/MM/YY", true)
+                  ? dayjs(filters.date_end_arrival, "YYYY/MM/DD")
                   : null
               }
               style={{ width: "100%", height: 43 }}
-              onChange={(_, dateString) => {
+              onChange={(date) => {
                 dispatch(
                   onChangeFilter({
                     key: "date_end_arrival",
-                    value: dateString.toString(),
+                    value: date ? date.format("YYYY-MM-DD") : "",
                   })
                 );
               }}
@@ -162,11 +170,19 @@ export const Filters = () => {
           <Schedule
             title="Туда"
             route="departure"
+            isActive={isActive.departure}
+            onClick={() => handleOnClick("departure")}
             onChange={handleSliderChange}
           />
         </div>
         <div className={style.filter__schedule}>
-          <Schedule title="Обратно" onChange={handleSliderChange} reversed />
+          <Schedule
+            title="Обратно"
+            onChange={handleSliderChange}
+            reversed
+            onClick={() => handleOnClick("arrival")}
+            isActive={isActive.arrival}
+          />
         </div>
       </div>
       <div className={style.last_tickets}>

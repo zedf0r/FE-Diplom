@@ -1,8 +1,11 @@
-export const formatDuration = (duration: number) => {
-  const minutes = Math.floor((duration % 3600) / 60);
-  const hours = Math.floor(duration / 3600);
+import dayjs from "dayjs";
 
-  const getHourWord = () => {
+export const formatDuration = (duration: number) => {
+  const date = dayjs().startOf("day").add(duration, "second");
+  const minutes = date.minute();
+  const hours = date.hour();
+
+  const getHourWord = (hours: number) => {
     if (hours % 10 === 1 && hours % 100 !== 11) return "час";
 
     if (hours % 10 >= 2 && hours % 10 <= 4) return "часа";
@@ -10,7 +13,7 @@ export const formatDuration = (duration: number) => {
     return "часов";
   };
 
-  const getMinuteWord = () => {
+  const getMinuteWord = (minutes: number) => {
     if (minutes % 10 === 1 && minutes % 100 !== 11) return "минута";
 
     if (minutes % 10 >= 2 && minutes % 10 <= 4) return "минуты";
@@ -21,10 +24,10 @@ export const formatDuration = (duration: number) => {
   return (
     <>
       <span>
-        {hours} {getHourWord()}
+        {hours} {getHourWord(hours)}
       </span>
       <span>
-        {minutes} {getMinuteWord()}
+        {minutes} {getMinuteWord(minutes)}
       </span>
     </>
   );

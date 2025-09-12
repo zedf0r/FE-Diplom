@@ -18,11 +18,11 @@ export const DateRange = ({ width, height, onChange }: TypeDateRangeProps) => {
         format={"DD/MM/YY"}
         value={
           filters.date_start !== ""
-            ? dayjs(filters.date_start, "DD/MM/YY", true)
+            ? dayjs(filters.date_start, "YYYY/MM/DD")
             : null
         }
-        onChange={(_, dateString) => {
-          onChange("date_start", dateString.toString());
+        onChange={(date) => {
+          onChange("date_start", date ? date.format("YYYY-MM-DD") : "");
         }}
         minDate={dayjs()}
         style={{ width: width, height: height }}
@@ -31,13 +31,11 @@ export const DateRange = ({ width, height, onChange }: TypeDateRangeProps) => {
         placeholder="ДД/ММ/ГГ"
         format={"DD/MM/YY"}
         value={
-          filters.date_end !== ""
-            ? dayjs(filters.date_end, "DD/MM/YY", true)
-            : null
+          filters.date_end !== "" ? dayjs(filters.date_end, "YYYY/MM/DD") : null
         }
         style={{ width: width, height: height }}
-        onChange={(_, dateString) => {
-          onChange("date_end", dateString.toString());
+        onChange={(date) => {
+          onChange("date_end", date ? date.format("YYYY-MM-DD") : "");
         }}
         disabledDate={(current) => {
           return filters.date_start &&

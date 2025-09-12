@@ -1,0 +1,85 @@
+.direction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.direction:hover > .button {
+  border: 2px solid #fcdc9d;
+}
+
+.direction:hover > .button div {
+  background-color: #fcdc9d;
+}
+
+.direction__box {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.direction__box span {
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  margin-top: 7px;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+}
+
+.box_reversed {
+  transform: rotate(180deg);
+}
+
+.title {
+  font-weight: 400;
+  font-size: 30px;
+  color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.button {
+  width: 19px;
+  height: 19px;
+  border: 2px solid #ffffff;
+  display: flex;
+  position: relative;
+  border-radius: 5px;
+  user-select: none;
+  transition: 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.button div {
+  position: absolute;
+  top: 0;
+  height: 0;
+  width: 10px;
+  height: 1px;
+  background-color: #fff;
+  transition: 0.4s;
+}
+
+.button div:first-child {
+  top: 7px;
+  left: 3px;
+  transform: rotate(90deg);
+}
+
+.button div:last-child {
+  top: 7px;
+  left: 3px;
+}
+
+.button_open div:first-child {
+  transform: rotate(0);
+}

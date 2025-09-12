@@ -102,5 +102,6 @@
   display: block;
 }
 
-.van__info__service__box {
+.van__info_service {
+  row-gap: 58px;
 }
