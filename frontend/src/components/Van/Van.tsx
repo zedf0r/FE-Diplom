@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { TypeSeatsArray } from "../../types";
 import style from "./Van.module.css";
 import classNames from "classnames";
-import { VanInfo } from "..";
+import { Seats, VanInfo } from "..";
 
 export const Van = ({
   seats,
@@ -30,26 +30,30 @@ export const Van = ({
           vans={seatFiltering}
           activeVanIndex={activeVanIndex}
           onClick={handleOnVanClick}
+          seats={seats}
         />
       )}
 
       {seatFiltering.map((seat, index) => {
+        const globalIndex = String(seats.indexOf(seat) + 1).padStart(2, "0");
+
         return (
-          <>
-            {activeVanIndex === index && (
-              <>
-                <div key={seat.coach._id} className={style.van__seats}>
-                  <div className={style.van__seats_numerical}>
-                    <span className={style.van__numerical__title}>
-                      {index + 1}
-                    </span>
-                    <span className={style.van__numerical__text}>вагон</span>
-                  </div>
-                  <VanInfo seat={seat} />
+          activeVanIndex === index && (
+            <div key={index} className={style.van}>
+              <div key={seat.coach._id} className={style.van__seats}>
+                <div className={style.van__seats_numerical}>
+                  <span className={style.van__numerical__title}>
+                    {globalIndex}
+                  </span>
+                  <span className={style.van__numerical__text}>вагон</span>
                 </div>
-              </>
-            )}
-          </>
+                <VanInfo seat={seat} />
+              </div>
+              <div className={style.places}>
+                <Seats places={seat} />
+              </div>
+            </div>
+          )
         );
       })}
     </>
@@ -59,19 +63,23 @@ export const Van = ({
 const VanNumber = ({
   vans,
   activeVanIndex,
+  seats,
   onClick,
 }: {
   vans: TypeSeatsArray;
+  seats: TypeSeatsArray;
   activeVanIndex: number | null;
   onClick: (index: number) => void;
 }) => {
   return (
     <div className={style.van__number}>
-      <p className={style.van__number__count_title}>
+      <div className={style.van__number__count_title}>
         Вагоны{" "}
-        {vans.map((van, index) => {
-          return (
-            <>
+        <div className={style.van__number_count}>
+          {vans.map((van, index) => {
+            const globalIndex = String(seats.indexOf(van) + 1).padStart(2, "0");
+
+            return (
               <span
                 key={van.coach._id}
                 className={classNames(style.van__number__count_text, {
@@ -79,12 +87,12 @@ const VanNumber = ({
                 })}
                 onClick={() => onClick(index)}
               >
-                {index + 1}
-              </span>{" "}
-            </>
-          );
-        })}
-      </p>
+                {globalIndex}
+              </span>
+            );
+          })}
+        </div>
+      </div>
       <p className={style.van__number__count_text_small}>
         Нумерация вагонов начинается с головы поезда
       </p>

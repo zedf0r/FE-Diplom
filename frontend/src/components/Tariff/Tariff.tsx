@@ -14,8 +14,8 @@ export const Tariff = ({ variant, count, price }: TypeTariffProps) => {
 
       <p className={style.tarrif__price}>
         <span className={style.tarrif__text}>от</span>
-        {price}
-        <span className={style.tarrif__valute}>&#8381;</span>
+        {price?.toLocaleString()}
+        <span className={style.tarrif__valute}>₽</span>
       </p>
     </div>
   );

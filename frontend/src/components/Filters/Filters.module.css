@@ -1,5 +1,5 @@
 .aside__filter {
-  flex: 0 1 calc(30% - 40px);
+  flex: 0 1 calc(40% - 32px);
   display: flex;
   flex-direction: column;
   row-gap: 95px;

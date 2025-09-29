@@ -1,6 +1,6 @@
 import { About, Advantages, Reviews, Home } from "./screen";
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <main>
       <Home />
@@ -10,3 +10,5 @@ export const HomePage = () => {
     </main>
   );
 };
+
+export default HomePage;

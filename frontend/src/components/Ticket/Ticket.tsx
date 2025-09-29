@@ -33,9 +33,9 @@ export const Ticket = (props: TypeTicket) => {
         <p className={style.ticket__price}>
           <span>от</span>
           <span className={style.ticket__text}>
-            {props.departure.min_price}
+            {props.departure.min_price.toLocaleString()}
           </span>
-          <span className={style.ticket__valute}>&#8381;</span>
+          <span className={style.ticket__valute}>₽</span>
         </p>
       </div>
     </article>

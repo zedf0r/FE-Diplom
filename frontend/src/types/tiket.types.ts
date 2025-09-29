@@ -61,7 +61,9 @@ export type TypeTicketRoute = {
   TypeTicketPrice &
   TypeTicketTrain;
 
-export type TypeTicket = {
+export type TypeTicket = TypeTicketTrip & TypeTicketSeats;
+
+export type TypeTicketTrip = {
   departure: TypeTicketRoute;
   arrival?: TypeTicketRoute;
-} & TypeTicketSeats;
+};

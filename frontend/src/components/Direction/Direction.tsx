@@ -1,16 +1,17 @@
 import classNames from "classnames";
 import style from "./Direction.module.css";
-import { ScheduleBox } from "../Icons";
 
 export const Direction = ({
   title,
   reversed,
   isActive,
   date,
+  children,
   onClick,
 }: {
   title: string;
   isActive: boolean;
+  children: React.ReactNode;
   reversed?: boolean;
   date?: string;
   onClick: () => void;
@@ -23,7 +24,7 @@ export const Direction = ({
             [style.box_reversed]: reversed,
           })}
         >
-          <ScheduleBox />
+          {children}
         </div>
 
         <h3 className={style.title}>{title}</h3>

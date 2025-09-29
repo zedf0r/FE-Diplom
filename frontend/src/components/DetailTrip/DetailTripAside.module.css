@@ -1,5 +1,7 @@
 .aside {
   background-color: #3e3c41;
+  flex: 0 0 calc(30% - 60px);
+  align-self: flex-start;
 }
 
 .aside__title {
@@ -43,13 +45,13 @@
   display: flex;
   flex-direction: column;
   row-gap: 70px;
-  height: 0;
+  max-height: 0;
   transition: 0.4s;
 }
 
 .trip__info_open {
-  padding: 50px 0 53px;
-  height: 400px;
+  padding: 20px 0 35px;
+  max-height: 1000px;
 }
 
 .trip__info::after {
@@ -143,4 +145,92 @@
   font-size: 16px;
   color: #928f94;
   font-weight: 400;
+}
+
+.passengers {
+  padding: 22px 28px;
+  position: relative;
+}
+
+.passengers__svg {
+  color: #ffa800;
+}
+
+.info__route {
+  display: flex;
+  justify-content: space-between;
+}
+
+.route__places_right {
+  text-align: right;
+}
+
+.route__arrow {
+  margin-top: -20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  color: #ffa800;
+}
+
+.route__arrow span {
+  font-weight: 400;
+  font-size: 18px;
+  color: #e5e5e5;
+}
+
+.passengers__count {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.passenger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.passenger__age {
+  font-weight: 400;
+  font-size: 18px;
+  color: #e5e5e5;
+}
+
+.passenger__price {
+  font-weight: 700;
+  font-size: 24px;
+  text-align: right;
+  color: #fff;
+}
+
+.passenger__valute {
+  color: #928f94;
+  font-weight: 300;
+}
+
+.passenger__total {
+  padding: 30px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.passenger__total__text {
+  font-weight: 700;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.passenger__total__price {
+  font-weight: 700;
+  font-size: 48px;
+  color: #ffa800;
+}
+
+.passenger__total__valute {
+  color: #e5e5e5;
+  font-weight: 300;
 }

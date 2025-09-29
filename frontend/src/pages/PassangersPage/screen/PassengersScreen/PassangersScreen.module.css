@@ -4,4 +4,5 @@
 
 .passengers__wrap {
   display: flex;
+  column-gap: 84px;
 }

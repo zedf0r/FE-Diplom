@@ -1,44 +1,82 @@
 import style from "./CountTickets.module.css";
-
-type TypeTicketsParams = {
-  age: string;
-  count: number;
-  info?: string;
-  place?: string;
-};
+import { useAppDispatch, useAppSelector } from "../../services/store";
+import { setTicketCountPlace } from "../../services/seats/seatsSlice";
+import type { TypeTicketParams } from "../../services/seats/seatsSlice";
+import classNames from "classnames";
 
 export const CountTickets = () => {
-  const ticketsCount: TypeTicketsParams[] = [
-    { age: "Взрослый", count: 2, info: "Можно добавить еще 3 пассажиров " },
-    {
-      age: "Детский",
-      count: 1,
-      info: "Можно добавить еще 3 детей до 10 лет.Свое место в вагоне, как у взрослых дешевле в среднем на 50-65%",
-    },
-    { age: "Детский", place: "«без места»", count: 2 },
-  ];
+  const { countTicketPlace } = useAppSelector((state) => state.seats);
 
   return (
     <div className={style.count__tickets}>
       <h3 className={style.tickets__variant_title}>Количество билетов</h3>
       <div className={style.ticket}>
-        {ticketsCount.map((ticket) => {
-          return <Count ticket={ticket} />;
+        {countTicketPlace.map((ticket, index) => {
+          return <Count key={index} ticket={ticket} />;
         })}
       </div>
     </div>
   );
 };
 
-const Count = ({ ticket }: { ticket: TypeTicketsParams }) => {
+const Count = ({ ticket }: { ticket: TypeTicketParams }) => {
+  const dispatch = useAppDispatch();
+
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (Number(event.target.value) < 0) {
+      return;
+    }
+
+    if (Number(event.target.value) > ticket.maxCount) {
+      return;
+    }
+
+    dispatch(
+      setTicketCountPlace({
+        age: ticket.age,
+        value: event.target.value,
+        seat: ticket.seat,
+      })
+    );
+  };
+
+  const componentInfoDisplay = () => {
+    if (ticket.age === "Взрослый") {
+      return (
+        <p className={style.ticket__info}>
+          Можно добавить еще {ticket.maxCount - Number(ticket.count)} пассажиров
+        </p>
+      );
+    }
+    if (ticket.age === "Детский" && ticket.seat) {
+      return (
+        <p className={classNames(style.ticket__info, style.ticket__info_child)}>
+          Можно добавить еще {ticket.maxCount - Number(ticket.count)} детей до
+          10 лет. Свое место в вагоне, как у взрослых, но дешевле в среднем на
+          50-65%
+        </p>
+      );
+    }
+  };
+
   return (
-    <div className={style.tickets__box}>
+    <div
+      className={classNames(style.tickets__box, {
+        [style.tickets__box_shadow]: ticket.count !== "0",
+      })}
+    >
       <div className={style.count__box}>
         <span>
-          {ticket.age} {ticket.place} - {ticket.count}
+          {ticket.age} {!ticket.seat && "«без места»"} -
         </span>
+        <input
+          className={style.input}
+          type="number"
+          onChange={(event) => handleOnChange(event)}
+          value={ticket.count}
+        />
       </div>
-      <p>{ticket.info}</p>
+      {componentInfoDisplay()}
     </div>
   );
 };

@@ -1,5 +1,8 @@
 export { Header } from "./Header/Header";
+
 export { Layout } from "./Layouts/Layot";
+export { CatalogLayout } from "./Layouts/CatalogLayout";
+
 export { Footer } from "./Footer/Footer";
 
 export { Form } from "./Form/Form";
@@ -27,5 +30,11 @@ export { VanType } from "./VanType/VanType";
 export { Van } from "./Van/Van";
 export { VanInfo } from "./VanInfo/VanInfo";
 
-export { DetailTrip } from "./DetailTrip/DetailTrip";
+export { DetailTripAside } from "./DetailTrip/DetailTripAside";
 export { Direction } from "./Direction/Direction";
+export { Seats } from "./Seats/Seats";
+export { Passengers } from "./Passengers/Passengers";
+export { Input } from "./Input/Input";
+export { SertificateSelect } from "./SertificateSelect/SertificateSelect";
+export { Passenger } from "./Passenger/Passenger";
+export { PassengerTitle } from "./PassengerTitle/PassengerTitle";

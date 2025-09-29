@@ -3,16 +3,35 @@ import type { TypeSeat } from "../../types";
 import style from "./VanInfo.module.css";
 import { ConditionerIcon, CupIcon, TowelIcon, WiFiIcon } from "../Icons";
 import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../services/store";
+import {
+  toggleService,
+  type TypeSelectedService,
+} from "../../services/seats/seatsSlice";
 
 export const VanInfo = ({ seat }: { seat: TypeSeat }) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [showTooltip, setShowTooltip] = useState({ tip: "", show: false });
+  const selectedService = useAppSelector(
+    (state) => state.seats.selectedService
+  );
+  const dispatch = useAppDispatch();
 
-  const handleOnMouseEnter = () => {
-    setShowTooltip(true);
+  const handleOnMouseEnter = (tip: string) => {
+    setShowTooltip({ tip: tip, show: true });
   };
 
-  const handleOnMouseLeave = () => {
-    setShowTooltip(false);
+  const handleOnMouseLeave = (tip: string) => {
+    setShowTooltip({ tip: tip, show: false });
+  };
+
+  const handleOnClick = (tip: string, _id: string, price?: number) => {
+    dispatch(
+      toggleService({
+        _id: _id,
+        service: tip,
+        price: price,
+      })
+    );
   };
 
   return (
@@ -22,7 +41,10 @@ export const VanInfo = ({ seat }: { seat: TypeSeat }) => {
       <VanInfoServices
         onMouseEnter={handleOnMouseEnter}
         onMouseLeave={handleOnMouseLeave}
+        onClick={handleOnClick}
         showTooltip={showTooltip}
+        selectedService={selectedService}
+        seat={seat}
       />
     </div>
   );
@@ -74,31 +96,45 @@ const VanInfoPrices = ({ seat }: { seat: TypeSeat }) => {
 
 const VanInfoServices = ({
   showTooltip,
+  seat,
+  selectedService,
+  onClick,
   onMouseEnter,
   onMouseLeave,
 }: {
-  showTooltip: boolean;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
+  showTooltip: { tip: string; show: boolean };
+  seat: TypeSeat;
+  selectedService: TypeSelectedService[];
+  onClick: (tip: string, _id: string, price?: number) => void;
+  onMouseEnter: (tip: string) => void;
+  onMouseLeave: (tip: string) => void;
 }) => {
   const serviceArray = [
     {
-      component: <ConditionerIcon size={{ width: "21", height: "21" }} />,
+      component: <ConditionerIcon size={{ width: "20", height: "20" }} />,
       tip: "кондиционер",
+      have: seat.coach.have_air_conditioning,
     },
     {
       component: <WiFiIcon size={{ width: "20", height: "16" }} />,
       tip: "WI-FI",
+      have: seat.coach.have_wifi,
+      price: seat.coach.wifi_price,
     },
     {
       component: <TowelIcon size={{ width: "22", height: "16" }} />,
       tip: "белье",
+      have: true,
+      is_included: seat.coach.is_linens_included,
+      price: seat.coach.linens_price,
     },
     {
       component: <CupIcon size={{ width: "20", height: "18" }} />,
       tip: "питание",
+      have: true,
     },
   ];
+
   return (
     <div className={classNames(style.van__info, style.van__info_service)}>
       <div className={style.van__info__inner}>
@@ -115,24 +151,38 @@ const VanInfoServices = ({
         </div>
         <div className={style.van__info__container}>
           {serviceArray.map((service, index) => {
+            const findItem = selectedService.some(
+              (item) =>
+                item._id === seat.coach._id && item.service === service.tip
+            );
             return (
-              <div
-                key={index}
-                className={style.van__info__service__box}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-              >
-                <div className={style.van__info__service_svg}>
-                  {service.component}
-                </div>
-                <p
-                  className={classNames(style.van__info__service_tip, {
-                    [style.van__info__service_tip_active]: showTooltip,
-                  })}
+              service.have && (
+                <div
+                  key={index}
+                  className={classNames(
+                    style.van__info__service__box,
+                    { [style.van__info__service__box_selected]: findItem },
+                    { [style.service__noactive]: service.is_included }
+                  )}
+                  onClick={() =>
+                    onClick(service.tip, seat.coach._id, service.price)
+                  }
+                  onMouseEnter={() => onMouseEnter(service.tip)}
+                  onMouseLeave={() => onMouseLeave(service.tip)}
                 >
-                  {service.tip}
-                </p>
-              </div>
+                  <div className={style.van__info__service_svg}>
+                    {service.component}
+                  </div>
+                  <p
+                    className={classNames(style.van__info__service_tip, {
+                      [style.van__info__service_tip_active]:
+                        showTooltip.tip === service.tip && showTooltip.show,
+                    })}
+                  >
+                    {service.tip}
+                  </p>
+                </div>
+              )
             );
           })}
         </div>
@@ -151,13 +201,13 @@ const VanInfoPricesCompare = ({ seat }: { seat: TypeSeat }) => {
       <>
         <p className={style.van__info_text}>
           <span className={style.van__info_text_bold}>
-            {seat.coach.top_price}
+            {seat.coach.top_price.toLocaleString()}
           </span>
           <span className={style.van__info_text_gray}>₽</span>
         </p>
         <p className={style.van__info_text}>
           <span className={style.van__info_text_bold}>
-            {seat.coach.bottom_price}
+            {seat.coach.bottom_price.toLocaleString()}
           </span>
           <span className={style.van__info_text_gray}>₽</span>
         </p>
@@ -169,7 +219,9 @@ const VanInfoPricesCompare = ({ seat }: { seat: TypeSeat }) => {
     <>
       <p className={style.van__info_text}>
         <span className={style.van__info_text_bold}>
-          {seat.coach.bottom_price}
+          {seat.coach.class_type === "first"
+            ? seat.coach.price.toLocaleString()
+            : seat.coach.bottom_price.toLocaleString()}
         </span>
         <span className={style.van__info_text_gray}>₽</span>
       </p>

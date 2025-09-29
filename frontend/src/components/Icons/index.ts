@@ -26,3 +26,6 @@ export { ClockIcon } from "./ClockIcon";
 export { TowelIcon } from "./TowelIcon";
 export { CupIcon } from "./CupIcon";
 export { ConditionerIcon } from "./ConditionerIcon";
+export { PassengerIcon } from "./PassengerIcon";
+export { SircleSuccessIcon } from "./SircleSuccessIcon";
+export { SircleErrorIcon } from "./SircleErrorIcon";

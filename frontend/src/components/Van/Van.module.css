@@ -54,6 +54,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
 }
 
 .van__number__count_text {
@@ -75,4 +78,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.van__number_count {
+  display: flex;
+  column-gap: 7px;
 }

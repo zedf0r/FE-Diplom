@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { Direction, ScheduleSlider } from "../";
 import style from "./Schedule.module.css";
 import type { TypeFilters } from "../../services/filters/filtersSlice";
+import { ScheduleBox } from "../Icons";
 
 export const Schedule = ({
   route,
@@ -29,7 +30,9 @@ export const Schedule = ({
         reversed={reversed}
         isActive={isActive}
         onClick={onClick}
-      />
+      >
+        <ScheduleBox />
+      </Direction>
       <div
         className={classNames(style.schedule__info, {
           [style.schedule__info_open]: isActive,

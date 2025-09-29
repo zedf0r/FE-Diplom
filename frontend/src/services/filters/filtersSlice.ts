@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { FILTER_EDIT } from "./actions";
+
+export const FILTER_EDIT = "FILTER_EDIT";
 
 export type TypeFilters = {
   from_city_id: string;

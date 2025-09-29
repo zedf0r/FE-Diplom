@@ -36,9 +36,10 @@ export const VanType = ({
     <div className={style.vantype}>
       <h3 className={style.vantype__title}>Тип вагона</h3>
       <div className={style.vantype__services}>
-        {services.map((service) => {
+        {services.map((service, index) => {
           return (
             <div
+              key={index}
               className={classNames(style.vantype__service, {
                 [style.vantype__service_active]: activeType === service.type,
               })}

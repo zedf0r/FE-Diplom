@@ -1,12 +1,13 @@
-import { DetailTrip } from "../../../../components";
+import { DetailTripAside, Passengers } from "../../../../components";
 import style from "./PassangersScreen.module.css";
 
-export const PassangersScreen = () => {
+export const PassengersScreen = () => {
   return (
     <section className={style.passengers}>
       <div className="container">
         <div className={style.passengers__wrap}>
-          <DetailTrip />
+          <DetailTripAside />
+          <Passengers />
         </div>
       </div>
     </section>

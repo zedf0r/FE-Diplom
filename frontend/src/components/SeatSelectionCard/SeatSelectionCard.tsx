@@ -9,18 +9,23 @@ import { fetchHelper } from "../../helper/fetchHelper";
 import type { TypeSeatsArray } from "../../types";
 
 export const SeatSelectionCard = () => {
-  const [activeType, setActiveType] = useState<string | undefined>(undefined);
   const navigate = useNavigate();
+
   const ticket = useAppSelector((state) => state.tickets.ticket);
+  const { selectedPlace, selectedService } = useAppSelector(
+    (state) => state.seats
+  );
+
+  const [activeType, setActiveType] = useState<string | undefined>(undefined);
   const [seats, setSeats] = useState<TypeSeatsArray | undefined>(undefined);
   const [isloading, setIsLoading] = useState(false);
+
   const { id } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
     fetchHelper({ method: "GET", url: `/routes/${id}/seats` })
       .then((data) => {
-        console.log(data);
         setSeats(data);
       })
       .finally(() => {
@@ -31,6 +36,15 @@ export const SeatSelectionCard = () => {
   const handleOnClick = () => {
     navigate(`/catalog/${id}/passengers`);
   };
+
+  const priceSelectedPlace = selectedPlace.reduce(
+    (acc, place) => acc + place.price,
+    0
+  );
+  const priceSelectedService = selectedService.reduce(
+    (acc, service) => acc + (service.price ? service.price : 0),
+    0
+  );
 
   return (
     <div className={style.card}>
@@ -94,8 +108,14 @@ export const SeatSelectionCard = () => {
             )}
           </div>
           <div className={style.card__total__price}>
-            <span className={style.total__price_text}>8 080</span>
-            <span className={style.total__price_valute}>₽</span>
+            {selectedPlace.length >= 1 && (
+              <>
+                <span className={style.total__price_text}>
+                  {(priceSelectedPlace + priceSelectedService).toLocaleString()}
+                </span>
+                <span className={style.total__price_valute}>₽</span>
+              </>
+            )}
           </div>
         </div>
       </div>

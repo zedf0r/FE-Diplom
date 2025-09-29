@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { ADDED_PARAMS } from "./actions";
 import type { TypeTicket } from "../../types";
+
+export const ADDED_PARAMS = "ADDED_PARAMS";
 
 type TypeTicketsParams = {
   total_count: number;

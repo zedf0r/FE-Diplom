@@ -55,6 +55,7 @@
   align-items: center;
   justify-content: center;
   transition: 0.3s;
+  position: relative;
 }
 
 .van__info__count_places {
@@ -80,7 +81,6 @@
 .van__info__service__box:hover {
   background: #ffa800;
   cursor: pointer;
-  position: relative;
 }
 
 .van__info__service_tip {
@@ -104,4 +104,18 @@
 
 .van__info_service {
   row-gap: 58px;
+}
+
+.van__info__service__box_selected {
+  background-color: #fdb935;
+  color: #fff;
+  border: 1px solid #fdb935;
+}
+
+.service__noactive {
+  opacity: 0.5;
+  cursor: no-drop;
+  background-color: #fdb935;
+  color: var(--primary-color);
+  pointer-events: none;
 }

@@ -1,1 +1,1 @@
-export { PassangersScreen } from "./PassengersScreen/PassengersSreen";
+export { PassengersScreen } from "./PassengersScreen/PassengersSreen";
