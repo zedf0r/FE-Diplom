@@ -48,6 +48,7 @@ const initialState: InitialState = {
   },
   selectedService: {
     arrivalService: [],
+
     departureService: [],
   },
 };
