@@ -1,7 +1,7 @@
 .home {
   height: 100vh;
   max-height: 596px;
-  background-image: url("/img/trailway_bg.png");
+  background-image: url("../../assets/img/trailway_bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;

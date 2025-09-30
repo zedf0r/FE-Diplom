@@ -1,8 +1,8 @@
 import style from "./Reviews.module.css";
 import { Carousel } from "antd";
 import { ReviewPersons } from "../";
-import avatar1 from "/img/avatar_1.png";
-import avatar2 from "/img/avatar_2.png";
+import avatar1 from "@/assets/img/avatar_1.png";
+import avatar2 from "@/assets/img/avatar_2.png";
 
 export const Reviews = () => {
   const persons = [

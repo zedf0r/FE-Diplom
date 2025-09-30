@@ -1,5 +1,5 @@
 import style from "./Loading.module.css";
-import loadingGif from "@/assets/gif/loading.gif";
+import loadingGif from "@/assets/img/loading.gif";
 
 export const Loading = () => {
   return (
