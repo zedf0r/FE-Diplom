@@ -26,7 +26,7 @@ export const Selection = ({
   const [searchText, setSearchText] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<number | null | NodeJS.Timeout>(null);
 
   const responseData = async (search: string) => {
     if (search.trim().length === 0) {

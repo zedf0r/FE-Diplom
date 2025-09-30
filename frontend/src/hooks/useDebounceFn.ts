@@ -4,7 +4,7 @@ export const useDebounceFn = (
   callback: (args: unknown) => void,
   delay: number
 ) => {
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<number | null | NodeJS.Timeout>(null);
 
   return useCallback(
     (...args: unknown[]) => {
@@ -12,7 +12,7 @@ export const useDebounceFn = (
         clearTimeout(timeoutRef.current);
       }
 
-      timeoutRef.current = window.setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         callback(args);
       }, delay);
     },
