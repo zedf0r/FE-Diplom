@@ -9,11 +9,21 @@ type TypeTicketsParams = {
   items: TypeTicket[];
 };
 
+type TypeTicketTotalPrice = {
+  adultPrice: number;
+  childPrice: number;
+  servicePrice: number;
+};
+
 type TypeTiketsState = {
   tickets: TypeTicketsParams;
   isLoading: boolean;
   lastTickets: TypeTicket[];
   ticket: TypeTicket | null;
+  totalPrice: {
+    arrivalPrice: TypeTicketTotalPrice;
+    departurePrice: TypeTicketTotalPrice;
+  };
 };
 
 const initialState: TypeTiketsState = {
@@ -24,6 +34,18 @@ const initialState: TypeTiketsState = {
   isLoading: false,
   lastTickets: [],
   ticket: null,
+  totalPrice: {
+    arrivalPrice: {
+      adultPrice: 0,
+      childPrice: 0,
+      servicePrice: 0,
+    },
+    departurePrice: {
+      adultPrice: 0,
+      childPrice: 0,
+      servicePrice: 0,
+    },
+  },
 };
 
 export const ticketsSlice = createSlice({
@@ -42,10 +64,29 @@ export const ticketsSlice = createSlice({
     setTicket: (state, action: PayloadAction<TypeTicket>) => {
       state.ticket = action.payload;
     },
+    setTotalPrice: (
+      state,
+      action: PayloadAction<{
+        price: TypeTicketTotalPrice;
+        routePrice: "arrival" | "departure";
+      }>
+    ) => {
+      const { price, routePrice } = action.payload;
+      if (routePrice === "arrival") {
+        state.totalPrice.arrivalPrice = price;
+      } else {
+        state.totalPrice.departurePrice = price;
+      }
+    },
   },
 });
 
-export const { setTikets, setIsLoading, setLastTickets, setTicket } =
-  ticketsSlice.actions;
+export const {
+  setTikets,
+  setIsLoading,
+  setLastTickets,
+  setTicket,
+  setTotalPrice,
+} = ticketsSlice.actions;
 
 export default ticketsSlice.reducer;

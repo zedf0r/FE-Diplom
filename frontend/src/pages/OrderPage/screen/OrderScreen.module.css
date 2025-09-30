@@ -1,0 +1,139 @@
+.order {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 123px;
+}
+
+.order__button {
+  align-self: flex-end;
+}
+
+.order__info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 45px;
+}
+
+.info__box {
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+  max-width: 960px;
+}
+
+.info__title {
+  padding: 30px;
+  border-bottom: 1px solid #928f94;
+  font-weight: 400;
+  font-size: 30px;
+  color: #292929;
+}
+
+.passengers {
+  display: flex;
+  padding: 61px 28px 25px;
+  justify-content: space-between;
+}
+
+.passengers__info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+}
+
+.passenger:last-child {
+  margin-bottom: 64px;
+}
+
+.passengers__total {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.total__text {
+  font-weight: 400;
+  font-size: 30px;
+  color: #292929;
+  display: flex;
+  justify-content: space-between;
+}
+
+.total__price {
+  font-weight: 700;
+  font-size: 30px;
+  color: #292929;
+}
+
+.total__valute {
+  color: #928f94;
+  font-weight: 300;
+}
+
+.circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: #ffa800;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.passenger {
+  display: flex;
+  column-gap: 45px;
+}
+
+.passenger__age {
+  display: flex;
+  flex-direction: column;
+  row-gap: 17px;
+  align-items: center;
+  max-width: 85px;
+  width: 100%;
+}
+
+.passenger__age p {
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+  color: #292929;
+}
+
+.passenger__info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.passenger__fio {
+  font-weight: 400;
+  font-size: 18px;
+  color: #292929;
+}
+
+.passenger__info span {
+  font-weight: 400;
+  font-size: 18px;
+  color: #928f94;
+}
+
+.type__payment {
+  padding: 44px 23px 21px 31px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.type__payment p {
+  font-weight: 400;
+  font-size: 24px;
+  color: #292929;
+}
+
+.payment__button {
+  align-self: flex-end;
+}

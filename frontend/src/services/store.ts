@@ -3,7 +3,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import ticketsReducer from "./tickets/ticketsSlice";
 import filterReducer from "./filters/filtersSlice";
 import seatReducer from "./seats/seatsSlice";
-import passengersSlice from "./passengers/passengersSlice";
+import passengersReduce from "./passengers/passengersSlice";
+import paymentsReduce from "./payments/paymentsSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,7 +13,8 @@ export const store = configureStore({
     tickets: ticketsReducer,
     filters: filterReducer,
     seats: seatReducer,
-    passengers: passengersSlice,
+    passengers: passengersReduce,
+    payments: paymentsReduce,
   },
 });
 

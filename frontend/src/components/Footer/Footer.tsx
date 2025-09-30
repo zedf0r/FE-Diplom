@@ -12,9 +12,20 @@ import {
 } from "../Icons";
 import { Button } from "../";
 import style from "./Footer.module.css";
+import { useState } from "react";
+import { fetchHelper } from "@/helper/fetchHelper";
 
 export const Footer = () => {
-  const handleClick = () => {};
+  const [email, setEmail] = useState("");
+
+  const socials = [
+    <YoutubeIcon />,
+    <InstagramIcon />,
+    <GooglePlusIcon />,
+    <FacebookIcon />,
+    <TwitterIcon />,
+  ];
+
   return (
     <footer className={style.footer}>
       <div className="container">
@@ -49,7 +60,7 @@ export const Footer = () => {
             <div className={style.subscribe__content}>
               <div className={style.footer__form}>
                 <label className={style.label} htmlFor="subscribe">
-                  Будтье в курсе событий
+                  Будьте в курсе событий
                 </label>
                 <div className={style.footer__input}>
                   <input
@@ -57,11 +68,20 @@ export const Footer = () => {
                     type="text"
                     id="subscribe"
                     placeholder="e-mail"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
                   />
                   <Button
                     type="button"
-                    onClick={handleClick}
                     className="button__outline_small"
+                    onClick={() => {
+                      fetchHelper({
+                        method: "POST",
+                        url: "/subscribe",
+                        body: email,
+                      });
+                      setEmail("");
+                    }}
                   >
                     Отправить
                   </Button>
@@ -72,25 +92,11 @@ export const Footer = () => {
                   Подписывайтесь на нас
                 </h3>
                 <div className={style.socials}>
-                  <a className={style.social}>
-                    <YoutubeIcon />
-                  </a>
-
-                  <a className={style.social}>
-                    <InstagramIcon />
-                  </a>
-
-                  <a className={style.social}>
-                    <GooglePlusIcon />
-                  </a>
-
-                  <a className={style.social}>
-                    <FacebookIcon />
-                  </a>
-
-                  <a className={style.social}>
-                    <TwitterIcon />
-                  </a>
+                  {socials.map((social, index) => (
+                    <a key={index} className={style.social}>
+                      {social}
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>

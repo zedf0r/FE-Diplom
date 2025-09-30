@@ -7,7 +7,13 @@ import {
   type TypeSelectedPlace,
 } from "../../services/seats/seatsSlice";
 
-export const Seats = ({ places }: { places: TypeSeat }) => {
+export const Seats = ({
+  places,
+  route,
+}: {
+  places: TypeSeat;
+  route: "departure" | "arrival";
+}) => {
   const { selectedPlace } = useAppSelector((state) => state.seats);
   const dispatch = useAppDispatch();
 
@@ -19,10 +25,13 @@ export const Seats = ({ places }: { places: TypeSeat }) => {
     ) {
       dispatch(
         toggleSeat({
-          _id: places.coach._id,
-          index: index,
-          class_type: places.coach.class_type,
-          price: places.coach.top_price,
+          seat: {
+            _id: places.coach._id,
+            index: index,
+            class_type: places.coach.class_type,
+            price: places.coach.top_price,
+          },
+          route: route,
         })
       );
     } else if (
@@ -32,20 +41,26 @@ export const Seats = ({ places }: { places: TypeSeat }) => {
     ) {
       dispatch(
         toggleSeat({
-          _id: places.coach._id,
-          index: index,
-          class_type: places.coach.class_type,
-          price: places.coach.bottom_price,
+          seat: {
+            _id: places.coach._id,
+            index: index,
+            class_type: places.coach.class_type,
+            price: places.coach.bottom_price,
+          },
+          route: route,
         })
       );
     }
     if (places.coach.class_type === "first") {
       dispatch(
         toggleSeat({
-          _id: places.coach._id,
-          index: index,
-          class_type: places.coach.class_type,
-          price: places.coach.price,
+          seat: {
+            _id: places.coach._id,
+            index: index,
+            class_type: places.coach.class_type,
+            price: places.coach.price,
+          },
+          route: route,
         })
       );
     }
@@ -53,10 +68,13 @@ export const Seats = ({ places }: { places: TypeSeat }) => {
     if (places.coach.class_type === "fourth") {
       dispatch(
         toggleSeat({
-          _id: places.coach._id,
-          index: index,
-          class_type: places.coach.class_type,
-          price: places.coach.bottom_price,
+          seat: {
+            _id: places.coach._id,
+            index: index,
+            class_type: places.coach.class_type,
+            price: places.coach.bottom_price,
+          },
+          route: route,
         })
       );
     }
@@ -94,14 +112,14 @@ export const Seats = ({ places }: { places: TypeSeat }) => {
             startIndex={0}
             onClick={() => handleOnClick(item[0].index, places)}
             place={places}
-            selectedPlace={selectedPlace}
+            selectedPlace={selectedPlace[`${route}Place`]}
           />
           <Place
             item={item}
             startIndex={1}
             onClick={() => handleOnClick(item[1].index, places)}
             place={places}
-            selectedPlace={selectedPlace}
+            selectedPlace={selectedPlace[`${route}Place`]}
           />
         </div>
         {chunkSize == 2 ? null : (
@@ -111,14 +129,14 @@ export const Seats = ({ places }: { places: TypeSeat }) => {
               startIndex={2}
               onClick={() => handleOnClick(item[2].index, places)}
               place={places}
-              selectedPlace={selectedPlace}
+              selectedPlace={selectedPlace[`${route}Place`]}
             />
             <Place
               item={item}
               startIndex={3}
               onClick={() => handleOnClick(item[3].index, places)}
               place={places}
-              selectedPlace={selectedPlace}
+              selectedPlace={selectedPlace[`${route}Place`]}
             />
           </div>
         )}

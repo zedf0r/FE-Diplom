@@ -1,0 +1,5 @@
+.passenger {
+  display: flex;
+  column-gap: 84px;
+  padding: 95px 0 180px;
+}

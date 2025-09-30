@@ -1,0 +1,150 @@
+.success_bg {
+  background-image: url("../../../../img/success_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 834px;
+  position: relative;
+  z-index: -1;
+}
+
+.success_bg::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.3;
+}
+
+.success {
+  margin-top: -350px;
+  margin-bottom: 175px;
+}
+
+.success__title {
+  font-weight: 700;
+  font-size: 72px;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+.success__info {
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid #c4c4c4;
+}
+
+.about__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 81px 40px;
+  position: relative;
+}
+
+.about__header::before {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  border-bottom: 1px solid #928f94;
+}
+
+.about__header__title {
+  font-weight: 700;
+  font-size: 36px;
+  color: #3e3c41;
+}
+
+.about__header__total {
+  font-weight: 400;
+  font-size: 36px;
+  color: #928f94;
+}
+
+.about__header__total_price {
+  color: #3e3c41;
+  font-weight: 700;
+}
+
+.about__todo {
+  background: #f4f3f6;
+  padding: 40px 0;
+}
+
+.about__todo__inner {
+  display: flex;
+  justify-content: space-between;
+  max-width: 776px;
+  margin: 0 auto;
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.todo p {
+  max-width: 160px;
+  text-align: center;
+}
+
+.about__main {
+  padding: 95px 0 130px;
+}
+
+.main__info {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.main__info_name {
+  font-weight: 700;
+  font-size: 36px;
+  color: #292929;
+  margin-bottom: 50px;
+}
+
+.main__info_text {
+  font-weight: 400;
+  font-size: 24px;
+  color: #292929;
+}
+
+.main__info_text:last-child {
+  margin-top: 90px;
+  font-weight: 700;
+}
+
+.about__footer {
+  background-color: rgba(255, 168, 0, 0.88);
+  padding: 57px 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about__footer_rate {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.about__footer_rate p {
+  font-weight: 400;
+  font-size: 24px;
+  color: #292929;
+}
+
+.about__footer_rate_star {
+  display: flex;
+  column-gap: 20px;
+}

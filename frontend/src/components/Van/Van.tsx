@@ -7,9 +7,11 @@ import { Seats, VanInfo } from "..";
 export const Van = ({
   seats,
   activeType,
+  route,
 }: {
   seats?: TypeSeatsArray;
   activeType?: string;
+  route: "departure" | "arrival";
 }) => {
   const [activeVanIndex, setActiveVanIndex] = useState<number>(0);
 
@@ -47,10 +49,10 @@ export const Van = ({
                   </span>
                   <span className={style.van__numerical__text}>вагон</span>
                 </div>
-                <VanInfo seat={seat} />
+                <VanInfo seat={seat} route={route} />
               </div>
               <div className={style.places}>
-                <Seats places={seat} />
+                <Seats places={seat} route={route} />
               </div>
             </div>
           )

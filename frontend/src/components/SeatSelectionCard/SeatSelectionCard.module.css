@@ -143,3 +143,11 @@
   margin-top: 50px;
   align-self: flex-end;
 }
+
+.buttons__reverse {
+  align-self: flex-end;
+}
+
+.reverse__svg {
+  transform: rotate(180deg);
+}

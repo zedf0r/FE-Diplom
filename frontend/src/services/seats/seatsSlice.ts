@@ -4,8 +4,14 @@ const ADDED_COUNT_TICKET = "ADDED_COUNT_TICKET";
 
 interface InitialState {
   countTicketPlace: TypeTicketParams[];
-  selectedPlace: TypeSelectedPlace[];
-  selectedService: TypeSelectedService[];
+  selectedPlace: {
+    arrivalPlace: TypeSelectedPlace[];
+    departurePlace: TypeSelectedPlace[];
+  };
+  selectedService: {
+    arrivalService: TypeSelectedService[];
+    departureService: TypeSelectedService[];
+  };
 }
 
 export type TypeTicketParams = {
@@ -36,8 +42,14 @@ const initialState: InitialState = {
     { age: "Детский", count: "0", seat: true, maxCount: 4 },
     { age: "Детский", count: "0", seat: false, maxCount: 2 },
   ],
-  selectedPlace: [],
-  selectedService: [],
+  selectedPlace: {
+    arrivalPlace: [],
+    departurePlace: [],
+  },
+  selectedService: {
+    arrivalService: [],
+    departureService: [],
+  },
 };
 
 export const seatSlice = createSlice({
@@ -57,10 +69,22 @@ export const seatSlice = createSlice({
         return value;
       });
     },
-    toggleSeat: (state, action: PayloadAction<TypeSelectedPlace>) => {
-      const prevItem = state.selectedPlace.some(
-        (seat) =>
-          seat._id === action.payload._id && seat.index === action.payload.index
+    toggleSeat: (
+      state,
+      action: PayloadAction<{
+        seat: TypeSelectedPlace;
+        route: "arrival" | "departure";
+      }>
+    ) => {
+      const { seat, route } = action.payload;
+
+      const targetArray =
+        route === "arrival"
+          ? state.selectedPlace.arrivalPlace
+          : state.selectedPlace.departurePlace;
+
+      const prevItem = targetArray.some(
+        (s) => s._id === seat._id && s.index === seat.index
       );
 
       const countsTicket = state.countTicketPlace.reduce(
@@ -69,35 +93,68 @@ export const seatSlice = createSlice({
       );
 
       if (prevItem) {
-        state.selectedPlace = state.selectedPlace.filter(
-          (seat) =>
-            !(
-              seat._id === action.payload._id &&
-              seat.index === action.payload.index
-            )
-        );
+        if (route === "arrival") {
+          state.selectedPlace.arrivalPlace = targetArray.filter(
+            (s) => !(s._id === seat._id && s.index === seat.index)
+          );
+        } else {
+          state.selectedPlace.departurePlace = targetArray.filter(
+            (s) => !(s._id === seat._id && s.index === seat.index)
+          );
+        }
       } else {
-        if (state.selectedPlace.length < countsTicket)
-          state.selectedPlace.push(action.payload);
+        if (targetArray.length < countsTicket)
+          if (route === "arrival") {
+            state.selectedPlace.arrivalPlace.push(seat);
+          } else {
+            state.selectedPlace.departurePlace.push(seat);
+          }
       }
     },
-    toggleService: (state, action: PayloadAction<TypeSelectedService>) => {
-      const prevItem = state.selectedService.some(
+    toggleService: (
+      state,
+      action: PayloadAction<{
+        selectedService: TypeSelectedService;
+        route: "departure" | "arrival";
+      }>
+    ) => {
+      const { selectedService, route } = action.payload;
+
+      const targetArray =
+        route === "arrival"
+          ? state.selectedService.arrivalService
+          : state.selectedService.departureService;
+
+      const prevItem = targetArray.some(
         (service) =>
-          service._id === action.payload._id &&
-          service.service === action.payload.service
+          service._id === selectedService._id &&
+          service.service === selectedService.service
       );
 
       if (prevItem) {
-        state.selectedService = state.selectedService.filter(
-          (seat) =>
-            !(
-              seat._id === action.payload._id &&
-              seat.service === action.payload.service
-            )
-        );
+        if (route === "arrival") {
+          state.selectedService.arrivalService = targetArray.filter(
+            (seat) =>
+              !(
+                seat._id === selectedService._id &&
+                seat.service === selectedService.service
+              )
+          );
+        } else {
+          state.selectedService.departureService = targetArray.filter(
+            (seat) =>
+              !(
+                seat._id === selectedService._id &&
+                seat.service === selectedService.service
+              )
+          );
+        }
       } else {
-        state.selectedService.push(action.payload);
+        if (route === "arrival") {
+          state.selectedService.arrivalService.push(selectedService);
+        } else {
+          state.selectedService.departureService.push(selectedService);
+        }
       }
     },
   },

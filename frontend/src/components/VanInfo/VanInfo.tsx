@@ -9,7 +9,13 @@ import {
   type TypeSelectedService,
 } from "../../services/seats/seatsSlice";
 
-export const VanInfo = ({ seat }: { seat: TypeSeat }) => {
+export const VanInfo = ({
+  seat,
+  route,
+}: {
+  seat: TypeSeat;
+  route: "departure" | "arrival";
+}) => {
   const [showTooltip, setShowTooltip] = useState({ tip: "", show: false });
   const selectedService = useAppSelector(
     (state) => state.seats.selectedService
@@ -27,9 +33,12 @@ export const VanInfo = ({ seat }: { seat: TypeSeat }) => {
   const handleOnClick = (tip: string, _id: string, price?: number) => {
     dispatch(
       toggleService({
-        _id: _id,
-        service: tip,
-        price: price,
+        selectedService: {
+          _id: _id,
+          service: tip,
+          price: price,
+        },
+        route: route,
       })
     );
   };
@@ -43,7 +52,7 @@ export const VanInfo = ({ seat }: { seat: TypeSeat }) => {
         onMouseLeave={handleOnMouseLeave}
         onClick={handleOnClick}
         showTooltip={showTooltip}
-        selectedService={selectedService}
+        selectedService={selectedService[`${route}Service`]}
         seat={seat}
       />
     </div>

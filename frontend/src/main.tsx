@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router";
 import { ConfigProvider } from "antd";
 import { Provider } from "react-redux";
 import { store } from "./services/store.ts";
+import { StepProvider } from "./components";
 
 const theme = {
   components: {
@@ -60,12 +61,14 @@ const theme = {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter basename={import.meta.env.DEV ? "/" : "FE-Diplom"}>
-        <ConfigProvider theme={theme}>
-          <App />
-        </ConfigProvider>
-      </BrowserRouter>
-    </Provider>
+    <StepProvider>
+      <Provider store={store}>
+        <BrowserRouter basename={import.meta.env.DEV ? "/" : "FE-Diplom"}>
+          <ConfigProvider theme={theme}>
+            <App />
+          </ConfigProvider>
+        </BrowserRouter>
+      </Provider>
+    </StepProvider>
   </StrictMode>
 );

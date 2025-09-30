@@ -32,3 +32,7 @@
 .error {
   border: 1px solid rgba(255, 61, 0, 0.76);
 }
+
+.payment__label {
+  color: #292929;
+}

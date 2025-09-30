@@ -1,7 +1,7 @@
 type TypeFetchOptions = {
   url: string;
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-  body?: object;
+  body?: object | string;
 };
 
 export const fetchHelper = async ({ method, url, body }: TypeFetchOptions) => {

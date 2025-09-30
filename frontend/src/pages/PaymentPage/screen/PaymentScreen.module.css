@@ -1,0 +1,137 @@
+.payment {
+  display: flex;
+  flex-direction: column;
+  row-gap: 116px;
+}
+
+.payment__data {
+  border: 1px solid #c4c4c4;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  max-width: 960px;
+  width: 100%;
+}
+
+.title {
+  padding: 35px;
+  position: relative;
+}
+
+.title h3 {
+  font-weight: 400;
+  font-size: 30px;
+  color: #292929;
+}
+
+.title::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-top: 1px dashed #928f94;
+  width: 100%;
+}
+
+.data__personal__info {
+  padding: 30px 35px 90px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  position: relative;
+}
+
+.personal__info__name {
+  display: flex;
+  column-gap: 25px;
+}
+
+.data__personal__info::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-top: 1px dashed #928f94;
+  width: 100%;
+}
+
+.data__payment_type {
+  padding: 50px 35px 64px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.data__payment_type::before {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-top: 1px dashed #928f94;
+  width: 100%;
+}
+
+.payment_type__list {
+  display: flex;
+  column-gap: 90px;
+}
+
+.payment_type__list p {
+  font-weight: 700;
+  font-size: 24px;
+  color: #292929;
+  max-width: 180px;
+}
+
+.payment__button {
+  align-self: flex-end;
+}
+
+.data__payment_type_last {
+  padding: 58px 36px 82px;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 24px;
+  color: #928f94;
+  position: relative;
+  cursor: pointer;
+  padding-left: 50px;
+}
+
+.label::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #928f94;
+  border-radius: 5px;
+}
+
+.input:checked + .label::after {
+  content: "✔";
+  position: absolute;
+  top: 0;
+  left: 6px;
+  font-size: 20px;
+  color: #928f94;
+}
+
+.input:checked + .label::after,
+.input:checked + .label {
+  color: #ffa800;
+}
+
+.input:checked + .label::before {
+  border: 1px solid #ffa800;
+}

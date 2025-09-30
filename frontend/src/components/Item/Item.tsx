@@ -13,7 +13,13 @@ type TypeKeySeats = {
   fourth: string;
 };
 
-export const Item = ({ ticket }: { ticket: TypeTicket }) => {
+export const Item = ({
+  ticket,
+  buttonText,
+}: {
+  ticket: TypeTicket;
+  buttonText?: string;
+}) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const tariffNames = {
@@ -22,6 +28,10 @@ export const Item = ({ ticket }: { ticket: TypeTicket }) => {
     third: "Плацкарт",
     fourth: "Сидячий",
   };
+
+  const className = buttonText ? "button__transparrent" : "button__fill_small";
+
+  if (!ticket) return null;
 
   const ticketSeats = Object.entries(ticket.available_seats_info);
 
@@ -49,15 +59,17 @@ export const Item = ({ ticket }: { ticket: TypeTicket }) => {
           <div className={style.serice__svg}>
             <ServiceIcon />
           </div>
+
           <Button
-            className="button__fill_small"
+            className={className}
             onClick={() => {
+              if (buttonText) return null;
               dispatch(setTicket(ticket));
               navigate(`${ticket.departure._id}`);
             }}
             type="button"
           >
-            Выбрать места
+            {buttonText ? buttonText : "Выбрать места"}
           </Button>
         </div>
       </div>

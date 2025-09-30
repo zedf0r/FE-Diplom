@@ -2,7 +2,7 @@ import style from "./Button.module.css";
 import classNames from "classnames";
 
 type TypeButtonProps = {
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
   className: string;
   type: "button" | "submit" | "reset";

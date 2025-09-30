@@ -14,10 +14,9 @@ type TypeRoute = {
 };
 
 export const DetailTripAside = () => {
-  const { countTicketPlace, selectedPlace } = useAppSelector(
-    (state) => state.seats
-  );
-  const ticket = useAppSelector((state) => state.tickets.ticket);
+  const { totalPrice, ticket } = useAppSelector((state) => state.tickets);
+  const { countTicketPlace } = useAppSelector((state) => state.seats);
+
   const [isActive, setIsActive] = useState({
     departure: false,
     arrival: false,
@@ -28,42 +27,23 @@ export const DetailTripAside = () => {
     setIsActive((prevState) => ({ ...prevState, [route]: !prevState[route] }));
   };
 
-  const getTicketPrices = () => {
-    if (!selectedPlace.length)
-      return {
-        adultCount: 0,
-        childCount: 0,
-        adultPrice: 0,
-        childPrice: 0,
-      };
+  const adultCount = Number(
+    countTicketPlace.find((item) => item.age === "Взрослый" && item.seat)
+      ?.count ?? 0
+  );
 
-    const adultCount = Number(
-      countTicketPlace.find((item) => item.age === "Взрослый" && item.seat)
-        ?.count ?? 0
-    );
+  const childCount = Number(
+    countTicketPlace.find((item) => item.age === "Детский" && item.seat)
+      ?.count ?? 0
+  );
 
-    const childCount = Number(
-      countTicketPlace.find((item) => item.age === "Детский" && item.seat)
-        ?.count ?? 0
-    );
-
-    const adultPrice = selectedPlace
-      .slice(0, adultCount)
-      .reduce((acc, item) => acc + item.price, 0);
-
-    const childPrice = selectedPlace
-      .slice(0, childCount)
-      .reduce((acc, item) => acc + item.price, 0);
-
-    return {
-      adultCount: adultCount,
-      childCount: childCount,
-      adultPrice: adultPrice,
-      childPrice: childPrice,
-    };
-  };
-
-  const { adultCount, childCount, adultPrice, childPrice } = getTicketPrices();
+  const adultTotalPrice =
+    totalPrice.departurePrice.adultPrice + totalPrice.arrivalPrice.adultPrice;
+  const childTotalPrice =
+    totalPrice.departurePrice.childPrice + totalPrice.arrivalPrice.childPrice;
+  const serviceTotalPrice =
+    totalPrice.arrivalPrice.servicePrice +
+    totalPrice.departurePrice.servicePrice;
 
   return (
     <aside className={style.aside}>
@@ -125,7 +105,7 @@ export const DetailTripAside = () => {
                     : ` ${adultCount} Взрослых`}
                 </p>
                 <p className={style.passenger__price}>
-                  {adultPrice.toLocaleString()}{" "}
+                  {adultTotalPrice.toLocaleString()}{" "}
                   <span className={style.passenger__valute}>₽</span>
                 </p>
               </div>
@@ -138,7 +118,7 @@ export const DetailTripAside = () => {
                     : `${childCount} Ребенка`}
                 </p>
                 <p className={style.passenger__price}>
-                  {childPrice.toLocaleString()}{" "}
+                  {childTotalPrice.toLocaleString()}{" "}
                   <span className={style.passenger__valute}>₽</span>
                 </p>
               </div>
@@ -149,7 +129,11 @@ export const DetailTripAside = () => {
       <div className={style.passenger__total}>
         <p className={style.passenger__total__text}>Итог</p>
         <p className={style.passenger__total__price}>
-          {(childPrice + adultPrice).toLocaleString()}{" "}
+          {(
+            childTotalPrice +
+            adultTotalPrice +
+            serviceTotalPrice
+          ).toLocaleString()}{" "}
           <span className={style.passenger__total__valute}>₽</span>
         </p>
       </div>

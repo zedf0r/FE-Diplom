@@ -5,7 +5,7 @@ import {
   updatePassengersInfo,
   type TypePersonal,
 } from "../../services/passengers/passengersSlice";
-import { Input, PassengerTitle, SertificateSelect } from "..";
+import { Checkbox, Input, PassengerTitle, SertificateSelect } from "..";
 import classNames from "classnames";
 import { SircleErrorIcon, SircleSuccessIcon } from "../Icons";
 
@@ -101,6 +101,7 @@ export const Passenger = ({
     const { name, type, value } = event.target;
 
     let newValue = value;
+    let newName = name;
 
     if (name === "serial" || name === "number") {
       newValue = value.replace(/\D/g, "");
@@ -114,10 +115,14 @@ export const Passenger = ({
       newValue = value.toUpperCase().replace(/[^IVXLCDMА-ЯA-Z0-9\s-]/g, "");
     }
 
+    if (name.includes("sex")) {
+      newName = "sex";
+    }
+
     dispatch(
       updatePassengersInfo({
         id: passenger.id,
-        k: name as keyof TypePersonal,
+        k: newName as keyof TypePersonal,
         value: type === "checkbox" ? event.target.checked : newValue,
       })
     );
@@ -235,13 +240,13 @@ export const Passenger = ({
                 >
                   <input
                     type="radio"
-                    name="sex"
-                    id="M"
+                    name={`sex-${passenger.id}`}
+                    id={`M-${passenger.id}`}
                     value={"Мужской"}
                     onChange={(event) => handleOnChange(event)}
                     required
                   />
-                  <label htmlFor="M" className={style.switch}>
+                  <label htmlFor={`M-${passenger.id}`} className={style.switch}>
                     М
                   </label>
                 </div>
@@ -250,13 +255,13 @@ export const Passenger = ({
                 >
                   <input
                     type="radio"
-                    name="sex"
-                    id="F"
+                    name={`sex-${passenger.id}`}
+                    id={`F-${passenger.id}`}
                     value={"Женский"}
                     onChange={(event) => handleOnChange(event)}
                     required
                   />
-                  <label htmlFor="F" className={style.switch}>
+                  <label htmlFor={`F-${passenger.id}`} className={style.switch}>
                     Ж
                   </label>
                 </div>
@@ -273,16 +278,11 @@ export const Passenger = ({
               />
             </div>
           </div>
-          <div className={style.info__checkbox}>
-            <input
-              type="checkbox"
-              name="limitmobility"
-              id="limitmobility"
-              onChange={(event) => handleOnChange(event)}
-              className={style.checkbox}
-            />
-            <label htmlFor="limitmobility">ограниченная подвижность</label>
-          </div>
+          <Checkbox
+            name="limitmobility"
+            label="ограниченная подвижность"
+            onChange={(event) => handleOnChange(event)}
+          />
         </div>
         <div className={style.info__sertificate}>
           <div

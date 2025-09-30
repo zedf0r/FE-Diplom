@@ -12,7 +12,7 @@ export const useDebounceFn = (
         clearTimeout(timeoutRef.current);
       }
 
-      timeoutRef.current = setTimeout(() => {
+      timeoutRef.current = window.setTimeout(() => {
         callback(args);
       }, delay);
     },

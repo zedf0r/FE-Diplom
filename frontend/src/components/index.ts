@@ -2,6 +2,7 @@ export { Header } from "./Header/Header";
 
 export { Layout } from "./Layouts/Layot";
 export { CatalogLayout } from "./Layouts/CatalogLayout";
+export { PassangerLayout } from "./Layouts/PassengerLayout";
 
 export { Footer } from "./Footer/Footer";
 
@@ -38,3 +39,9 @@ export { Input } from "./Input/Input";
 export { SertificateSelect } from "./SertificateSelect/SertificateSelect";
 export { Passenger } from "./Passenger/Passenger";
 export { PassengerTitle } from "./PassengerTitle/PassengerTitle";
+
+export { StepContext } from "./StepContext/StepContext";
+export { StepProvider } from "./StepContext/StepProvider";
+export { Checkbox } from "./Checkbox/Checkbox";
+
+export { Loading } from "./Loading/Loading";

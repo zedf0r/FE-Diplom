@@ -56,7 +56,7 @@ export const Passengers = () => {
               return (
                 <Passenger
                   passenger={passenger}
-                  key={index}
+                  key={passenger.id}
                   title={`Пассажир ${index + 1}`}
                 />
               );
@@ -71,7 +71,7 @@ export const Passengers = () => {
       </div>
       <div className={style.button__submit}>
         <Button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("payment")}
           type="button"
           className={className}
         >

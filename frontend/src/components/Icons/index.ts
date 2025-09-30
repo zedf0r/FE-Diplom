@@ -29,3 +29,7 @@ export { ConditionerIcon } from "./ConditionerIcon";
 export { PassengerIcon } from "./PassengerIcon";
 export { SircleSuccessIcon } from "./SircleSuccessIcon";
 export { SircleErrorIcon } from "./SircleErrorIcon";
+export { ComputerIcon } from "./ComputerIcon";
+export { ChatIcon } from "./ChatIcon";
+export { ConciergeIcon } from "./ConciergeIcon";
+export { StarIcon } from "./StarIcon";

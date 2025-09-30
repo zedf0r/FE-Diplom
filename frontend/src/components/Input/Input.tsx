@@ -6,10 +6,11 @@ export const Input = ({
   labelText,
   inputName,
   value,
-  pattern,
   type,
+  classNameLabel,
   error,
   maxLength,
+  placeholder,
 
   onChange,
 }: {
@@ -18,7 +19,9 @@ export const Input = ({
   type: string;
   inputName: string;
   value: string;
-  pattern?: string;
+  classNameLabel?: string;
+  placeholder?: string;
+
   error?: boolean;
   maxLength?: number;
 
@@ -26,7 +29,12 @@ export const Input = ({
 }) => {
   return (
     <div className={style.input__box} style={{ maxWidth: maxWidth }}>
-      <label htmlFor={inputName} className={style.label}>
+      <label
+        htmlFor={inputName}
+        className={classNames(style.label, {
+          [style[classNameLabel!]]: classNameLabel ? classNameLabel : null,
+        })}
+      >
         {labelText}
       </label>
       <input
@@ -37,7 +45,7 @@ export const Input = ({
         value={value}
         onChange={(event) => onChange(event)}
         maxLength={maxLength}
-        pattern={pattern}
+        placeholder={placeholder}
         required
       />
     </div>
