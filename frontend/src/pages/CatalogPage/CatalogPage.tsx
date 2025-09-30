@@ -40,12 +40,9 @@ const CatalogPage = () => {
       }
     });
 
-    console.log(params.toString());
-
     fetchHelper({ method: "GET", url: `/routes?${params.toString()}` }).then(
       (data) => {
         dispatch(setTikets(data));
-        console.log(data);
       }
     );
   };
