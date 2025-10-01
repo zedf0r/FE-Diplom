@@ -16,8 +16,8 @@ export const Form = ({ gap }: { gap: string }) => {
   const dispatch = useAppDispatch();
   const { filters } = useAppSelector((state) => state.filters);
 
-  const handleClick = () => {
-    fetchDate();
+  const handleClick = async () => {
+    await fetchDate();
     navigate("/catalog");
   };
 
